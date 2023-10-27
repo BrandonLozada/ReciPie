@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReciPie.Views.RegisterUser"
+             NavigationPage.HasBackButton="True">
+    <ContentPage.Content>
+        <StackLayout>
+            <BoxView Color="red"
+              HeightRequest="80"
+              Margin="0,0,0,20"></BoxView>
+            <Label Text="Crear cuenta"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                   FontSize="Large"
+                   TextColor="black"/>
+            <Image Source="crearcuenta.png"
+                   WidthRequest="100"
+                   HeightRequest="100"/>
+            <Label Text="Usuario"
+                   Margin="43,0,0,0"
+                   FontSize="18"
+                   TextColor="black"/>
+            <Entry Placeholder="Ingrese su nombre de usuario"
+                   x:Name="TxtName"
+                   Margin="40,-10,40,10"
+                   FontSize="16"
+                   HeightRequest="50"></Entry>
+            <Label Text="Email"
+                   Margin="43,0,0,0"
+                   FontSize="18"
+                   TextColor="black"/>
+            <Entry Placeholder="Ingrese su correo" 
+                   x:Name="TxtEmail"
+                   Margin="40,-10,40,10"
+                   FontSize="16"
+                   HeightRequest="50"></Entry>
+            <Label Text="Contraseña"
+                   Margin="43,0,0,0"
+                   FontSize="18"
+                   TextColor="black"/>
+            <Entry Placeholder="Ingrese su contraseña"
+                   IsPassword="True"
+                   x:Name="TxtPassword"
+                   Margin="40,-10,40,10"
+                   FontSize="16"
+                   HeightRequest="50"></Entry>
+            <Label Text="Confirmar Contraseña"
+                   Margin="43,0,0,0"
+                   FontSize="18"
+                   TextColor="black"/>
+            <Entry IsPassword="True" Placeholder="Re-escriba su contraseña"
+                   x:Name="TxtConfirmPass"
+                   Margin="40,-10,40,10"
+                   FontSize="16"
+                   HeightRequest="50"></Entry>
+            <Button Text="Registrarse" x:Name="ButtonRegister"
+                    Clicked="ButtonRegister_Clicked"
+                    Margin="40,30,40,10"
+                    CornerRadius="0"
+                    BackgroundColor="white"
+                    BorderWidth="1"
+                    BorderColor="black"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

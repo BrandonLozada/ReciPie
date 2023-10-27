@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReciPie.Views.Producto.ProductEntry"
+             Padding="30,0,30,0">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Label Text="Agregar Producto"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                  FontSize="Large"
+                   TextColor="black"
+                   Margin="0,0,0,20"/>
+            <Image Source="add.png"
+                   WidthRequest="100"
+                   HeightRequest="100"
+                   Margin="0,0,0,20"/>
+            <Label Text="Nombre del Producto"
+                   Margin="3,0,0,0"
+                   FontSize="18"
+                   TextColor="black"/>
+            <Entry x:Name="TxtName"
+                   Placeholder="Ingresa el nombre del Producto"
+                   Margin="0,-14,0,0"
+                   FontSize="16"
+                   HeightRequest="55"/>
+            <Label Text="Cantidad"
+                   Margin="3,0,0,0"
+                   FontSize="18"
+                   TextColor="black"/>
+            <Entry x:Name="TxtCantidad"
+                   Placeholder="Ingresa la cantidad del Producto"
+                   Keyboard="Numeric"
+                   Margin="0,-14,0,0"
+                   FontSize="16"
+                   HeightRequest="55"/>
+            <Label Text="Marca"
+                   Margin="3,0,0,0"
+                   FontSize="18"
+                   TextColor="black"/>
+            <Entry x:Name="TxtMarca"
+                   Placeholder="Ingresa la marca del Producto"
+                   Margin="0,-14,0,0"
+                   FontSize="16"
+                   HeightRequest="55"/>
+            <Label Text="Descripción"
+                   Margin="3,0,0,0"
+                   FontSize="18"
+                   TextColor="black"/>
+            <Editor x:Name="TxtDescripcion"
+                   Placeholder="Ingresa la descripción del Producto"
+                    HeightRequest="150"
+                    MaxLength="200"
+                    Margin="0,-10,0,0"
+                   FontSize="16"/>
+            <Button Text="Guardar Producto"
+                    x:Name="ButtonSave"
+                    Clicked="ButtonSave_Clicked"
+                    CornerRadius="0"
+                    BackgroundColor="white"
+                    BorderWidth="1"
+                    BorderColor="black"
+                    Margin="0,25,0,0"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

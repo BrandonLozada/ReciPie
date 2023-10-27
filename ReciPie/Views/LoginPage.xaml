@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReciPie.Views.LoginPage"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <StackLayout>
+            <BoxView Color="red"
+              HeightRequest="80"></BoxView>
+            <Label Text="Iniciar Sesión"
+                   Margin="0,30,0,40"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="30"
+                   TextColor="Black"
+                   FontAttributes="Italic"/>
+            <Image Source="tienda.png"
+                   WidthRequest="100"
+                   HeightRequest="100"/>
+            <BoxView></BoxView>
+            <Label Text="Email"
+                   Margin="43,0,0,0"
+                   FontSize="20"
+                   TextColor="black"/>
+            <Entry Placeholder="Ingrese su Email" 
+                   x:Name="TxtEmail"
+                   Keyboard="Email"
+                   Margin="40,-10,40,10"
+                   FontSize="18"
+                   HeightRequest="50"
+                   FontAttributes="Italic"></Entry>
+            <Label Text="Contraseña"
+                   Margin="43,0,0,0"
+                   FontSize="20"
+                   TextColor="black"/>
+            <Entry Placeholder="Ingrese su Contraseña"
+                   IsPassword="True"
+                   x:Name="TxtPassword"
+                   Margin="40,-10,40,0"
+                   FontSize="18"
+                   HeightRequest="50"
+                   FontAttributes="Italic"/>
+            <Button Text="Entrar"
+                    x:Name="BtnSignIn"
+                    CornerRadius="0"
+                    BackgroundColor="white"
+                    BorderWidth="1"
+                    BorderColor="black"
+                    Clicked="BtnSignIn_Clicked"
+                    Margin="40,20,40,0"></Button>
+            
+            <Label Text="Olvidaste tu contraseña? Haz clic aquí"
+                    FontAttributes="Italic"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    TextColor="Blue"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Margin="0,10,0,0"
+                    FontSize="Small"
+                   TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="ForgotTap"
+                                            Tapped="ForgotTap_Tapped"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Crear cuenta"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                   FontAttributes="Bold"
+                    TextColor="Blue"
+                    HorizontalOptions="Center"
+                    FontSize="20"
+                    x:Name="LblRegister"
+                    Margin="0,40,0,0"
+                    TextDecorations="Underline">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="RegisterTap"
+                                            Tapped="RegisterTap_Tapped"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
