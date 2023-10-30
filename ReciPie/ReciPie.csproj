@@ -11,11 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\tienda.png" />
+    <None Remove="Images\recipie_logo.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <ApplicationDefinition Include="Images\tienda.png" />
+    <ApplicationDefinition Include="Images\recipie_logo.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -76,5 +76,14 @@
     <EmbeddedResource Update="Views\Student\StudentListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Receta\RecipieListPage.xaml.cs">
+      <DependentUpon>RecipieListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Receta\RecetaEntry.xaml.cs">
+      <DependentUpon>RecetaEntry.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

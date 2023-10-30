@@ -14,7 +14,7 @@
                    FontSize="30"
                    TextColor="Black"
                    FontAttributes="Italic"/>
-            <Image Source="tienda.png"
+            <Image Source="recipie_logo.png"
                    WidthRequest="100"
                    HeightRequest="100"/>
             <BoxView></BoxView>
@@ -22,7 +22,7 @@
                    Margin="43,0,0,0"
                    FontSize="20"
                    TextColor="black"/>
-            <Entry Placeholder="Ingrese su Email" 
+            <Entry Placeholder="Ingrese su correo electrónico" 
                    x:Name="TxtEmail"
                    Keyboard="Email"
                    Margin="40,-10,40,10"
@@ -33,7 +33,7 @@
                    Margin="43,0,0,0"
                    FontSize="20"
                    TextColor="black"/>
-            <Entry Placeholder="Ingrese su Contraseña"
+            <Entry Placeholder="Ingrese su contraseña"
                    IsPassword="True"
                    x:Name="TxtPassword"
                    Margin="40,-10,40,0"
@@ -49,7 +49,7 @@
                     Clicked="BtnSignIn_Clicked"
                     Margin="40,20,40,0"></Button>
             
-            <Label Text="Olvidaste tu contraseña? Haz clic aquí"
+            <Label Text="¿Olvidaste tu contraseña? Haz clic aquí"
                     FontAttributes="Italic"
                     Grid.Row="0"
                     Grid.Column="1"

@@ -29,7 +29,9 @@ namespace ReciPie.Views
 
         private void BtnProductsList_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ProductListPage());
+            // Navigation.PushAsync(new ProductListPage());
+            Navigation.PushAsync(new RecipieListPage());
+
         }
 
         private void BtnProveedorList_Clicked(object sender, EventArgs e)

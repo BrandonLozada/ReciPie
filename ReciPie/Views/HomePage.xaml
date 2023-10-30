@@ -22,7 +22,7 @@
                     Clicked="BtnStudentList_Clicked"
                     Margin="40,10,40,0"
                     IsVisible="false"/>
-            <Button Text="Productos"
+            <Button Text="Recetas"
                     x:Name="BtnProductList"
                     Clicked="BtnProductsList_Clicked"
                     Margin="40,40,40,0"
