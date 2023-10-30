@@ -4,43 +4,44 @@
              x:Class="ReciPie.Views.LoginPage"
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
-        <StackLayout>
-            <BoxView Color="red"
+        <Grid>
+            <StackLayout>
+                <BoxView Color="red"
               HeightRequest="80"></BoxView>
-            <Label Text="Iniciar Sesión"
+                <Label Text="Iniciar Sesión"
                    Margin="0,30,0,40"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
                    FontSize="30"
                    TextColor="Black"
                    FontAttributes="Italic"/>
-            <Image Source="recipie_logo.png"
+                <Image Source="recipie_logo.png"
                    WidthRequest="100"
                    HeightRequest="100"/>
-            <BoxView></BoxView>
-            <Label Text="Email"
+                <BoxView></BoxView>
+                <Label Text="Email"
                    Margin="43,0,0,0"
                    FontSize="20"
                    TextColor="black"/>
-            <Entry Placeholder="Ingrese su correo electrónico" 
+                <Entry Placeholder="Ingrese su correo electrónico" 
                    x:Name="TxtEmail"
                    Keyboard="Email"
                    Margin="40,-10,40,10"
                    FontSize="18"
                    HeightRequest="50"
                    FontAttributes="Italic"></Entry>
-            <Label Text="Contraseña"
+                <Label Text="Contraseña"
                    Margin="43,0,0,0"
                    FontSize="20"
                    TextColor="black"/>
-            <Entry Placeholder="Ingrese su contraseña"
+                <Entry Placeholder="Ingrese su contraseña"
                    IsPassword="True"
                    x:Name="TxtPassword"
                    Margin="40,-10,40,0"
                    FontSize="18"
                    HeightRequest="50"
                    FontAttributes="Italic"/>
-            <Button Text="Entrar"
+                <Button Text="Entrar"
                     x:Name="BtnSignIn"
                     CornerRadius="0"
                     BackgroundColor="white"
@@ -48,8 +49,8 @@
                     BorderColor="black"
                     Clicked="BtnSignIn_Clicked"
                     Margin="40,20,40,0"></Button>
-            
-            <Label Text="¿Olvidaste tu contraseña? Haz clic aquí"
+
+                <Label Text="¿Olvidaste tu contraseña? Haz clic aquí"
                     FontAttributes="Italic"
                     Grid.Row="0"
                     Grid.Column="1"
@@ -59,12 +60,12 @@
                     Margin="0,10,0,0"
                     FontSize="Small"
                    TextDecorations="Underline">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="ForgotTap"
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="ForgotTap"
                                             Tapped="ForgotTap_Tapped"></TapGestureRecognizer>
-                </Label.GestureRecognizers>
-            </Label>
-            <Label Text="Crear cuenta"
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Crear cuenta"
                     Grid.Row="0"
                     Grid.Column="0"
                    FontAttributes="Bold"
@@ -74,13 +75,33 @@
                     x:Name="LblRegister"
                     Margin="0,40,0,0"
                     TextDecorations="Underline">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="RegisterTap"
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="RegisterTap"
                                             Tapped="RegisterTap_Tapped"></TapGestureRecognizer>
-                </Label.GestureRecognizers>
-            </Label>
-
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
             
-        </StackLayout>
+            <Grid 
+                x:Name="isVisible"
+                Opacity=".8" 
+                BackgroundColor="Black" 
+                IsVisible="False">
+                <ActivityIndicator 
+                    x:Name="isLoading"
+                    IsRunning="False" 
+                    HorizontalOptions="Center"
+                    Color="LightGray"
+                    Margin="10,-25,10,10"/>
+                <Label Text="Estamos enviando la información. Espere un momento por favor..."
+                       TextColor="LightGray"
+                       FontFamily="Lumanosimo_Regular.ttf"
+                       FontSize="15"
+                       HorizontalOptions="CenterAndExpand"
+                       VerticalOptions="Center"
+                       Margin="40"
+                       Padding="10,75,10,10"/>
+            </Grid>       
+    </Grid>
     </ContentPage.Content>
 </ContentPage>

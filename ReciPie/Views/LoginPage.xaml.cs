@@ -36,6 +36,10 @@ namespace ReciPie.Views
         {
             try
             {
+                isVisible.IsVisible = true;
+                isLoading.IsRunning = true;
+                IsBusy = true;
+
                 string email = TxtEmail.Text;
                 string password = TxtPassword.Text;
                 if (String.IsNullOrEmpty(email))
@@ -80,7 +84,8 @@ namespace ReciPie.Views
                     await DisplayAlert("Error", exception.Message, "ok");
                 }
             }
-            
+            isVisible.IsVisible = false;
+            isLoading.IsRunning = false;
         }
 
         private async void RegisterTap_Tapped(object sender, EventArgs e)
