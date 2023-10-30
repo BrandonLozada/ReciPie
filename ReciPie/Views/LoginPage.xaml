@@ -19,7 +19,7 @@
                    WidthRequest="100"
                    HeightRequest="100"/>
                 <BoxView></BoxView>
-                <Label Text="Email"
+                <Label Text="Correo electrónico"
                    Margin="43,0,0,0"
                    FontSize="20"
                    TextColor="black"/>

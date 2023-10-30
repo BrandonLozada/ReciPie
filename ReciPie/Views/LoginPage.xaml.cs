@@ -38,10 +38,10 @@ namespace ReciPie.Views
             {
                 isVisible.IsVisible = true;
                 isLoading.IsRunning = true;
-                IsBusy = true;
 
                 string email = TxtEmail.Text;
                 string password = TxtPassword.Text;
+
                 if (String.IsNullOrEmpty(email))
                 {
                     await DisplayAlert("Advertencia", "Ingresa tu Email", "Ok");

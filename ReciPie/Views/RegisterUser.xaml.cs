@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReciPie.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,66 +24,72 @@ namespace ReciPie.Views
         {
             try
             {
+                isVisible.IsVisible = true;
+                isLoading.IsRunning = true;
+
                 string name = TxtName.Text;
                 string email = TxtEmail.Text;
                 string password = TxtPassword.Text;
                 string confirmPassword = TxtConfirmPass.Text;
-                if (String.IsNullOrEmpty(name))
+
+                if (string.IsNullOrEmpty(name))
                 {
-                    await DisplayAlert("Advertencia", "Ingresa tu Nombre de Usuario", "Ok");
+                    await DisplayAlert("Advertencia", "El titulo es necesario.", "Aceptar");
                     return;
                 }
-                else if (String.IsNullOrEmpty(email))
+                if (!await Repository.ValidateEmail(email))
                 {
-                    await DisplayAlert("Advertencia", "Ingresa tu Email", "Ok");
+                    await DisplayAlert("Advertencia", "El formato de correo electrónico es inválido.", "Aceptar");
                     return;
                 }
-                else if (String.IsNullOrEmpty(password))
+                else if (string.IsNullOrEmpty(password))
                 {
-                    await DisplayAlert("Advertencia", "Ingresa tu Contraseña", "Ok");
+                    await DisplayAlert("Advertencia", "La contraseña es necesaria.", "Aceptar");
                     return;
                 }
                 else if (password.Length<6)
                 {
-                    await DisplayAlert("Advertencia", "La contraseña debe de ser mayor a 6 Digitos", "Ok");
+                    await DisplayAlert("Advertencia", "La contraseña debe de ser mayor a 6 dígitos", "Aceptar");
                     return;
                 }
-                else if (String.IsNullOrEmpty(confirmPassword))
+                else if (string.IsNullOrEmpty(confirmPassword))
                 {
-                    await DisplayAlert("Advertencia", "Ingresa tu Confirmación Contraseña", "Ok");
+                    await DisplayAlert("Advertencia", "La confirmación de contraseña es necesaria.", "Aceptar");
                     return;
                 }
                 else if (password != confirmPassword)
                 {
-                    await DisplayAlert("Advertencia", "Las contraseñas no coinciden", "Ok");
+                    await DisplayAlert("Advertencia", "La confirmación no coincide con la contraseña.", "Aceptar");
                     return;
                 }
 
                 bool isSave = await _userRepository.Register(email, name, password);
+                
                 if (isSave)
                 {
-                    await DisplayAlert("Usuario Registrado", "El registro ha sido un exito", "Ok");
+                    await DisplayAlert("¡Bienvenido!", $"Haz creado tu cuenta e iniciado sesión en ReciPie", "Aceptar");
                     await Navigation.PopModalAsync();
                 }
                 else
                 {
-                    await DisplayAlert("Advertencia", "Registro incorrecto", "Ok");
+                    await DisplayAlert("Advertencia", "Registro incorrecto", "Aceptar");
                 }
             }
             catch(Exception exception)
             {
+               // TODO: Manejar mensajes de excepción.
                if(exception.Message.Contains("EMAIL_EXISTS"))
                 {
-                   await DisplayAlert("Advertencia", "El Email ya existe, Ingresa otro distinto", "Ok");
+                   await DisplayAlert("Advertencia", "El Email ya existe, Ingresa otro distinto", "Aceptar");
                 }
                 else
                 {
-                    await DisplayAlert("Exito", "Cuenta creada correctamente" , "Ok");
+                    await DisplayAlert("Exito", "Cuenta creada correctamente" , "Aceptar");
                 }
                 
             }
-            
-
+            isVisible.IsVisible = false;
+            isLoading.IsRunning = false;
         }   
     }
 }
