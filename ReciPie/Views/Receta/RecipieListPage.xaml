@@ -28,12 +28,12 @@
 
                                 <StackLayout Orientation="Horizontal" Padding="5">
                                     <Frame Padding="0"
-                                   HeightRequest="60"
-                                   WidthRequest="60"
-                                   BackgroundColor="White"
-                                   CornerRadius="100"
-                                   BorderColor="Teal"
-                                   IsClippedToBounds="True">
+                                       HeightRequest="60"
+                                       WidthRequest="60"
+                                       BackgroundColor="White"
+                                       CornerRadius="100"
+                                       BorderColor="Teal"
+                                       IsClippedToBounds="True">
                                         <Frame.Content>
                                             <Image Source="{Binding Image}" Aspect="Fill"/>
                                         </Frame.Content>

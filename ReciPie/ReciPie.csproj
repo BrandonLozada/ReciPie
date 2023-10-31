@@ -79,6 +79,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\Receta\RecipieDetails.xaml.cs">
+      <DependentUpon>RecipieDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Receta\RecipieListPage.xaml.cs">
       <DependentUpon>RecipieListPage.xaml</DependentUpon>
     </Compile>

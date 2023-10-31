@@ -27,16 +27,19 @@ namespace ReciPie
             return false;
         }
 
-        public async Task<List<ProductoModel>> GetAll()
+        public async Task<List<Recipie>> GetAll()
         {
-            return (await firebaseClient.Child("recipes").OnceAsync<ProductoModel>()).Select(item => new ProductoModel
+            return (await firebaseClient.Child("recipes").OnceAsync<Recipie>()).Select(item => new Recipie
             {
-                Nombre = item.Object.Nombre,
-                Cantidad = item.Object.Cantidad,
-                Image = item.Object.Image,
                 Id = item.Key,
-                Marca = item.Object.Marca,
-                Descripcion = item.Object.Descripcion
+                Title = item.Object.Title,
+                Description = item.Object.Description,
+                //Image = item.Object.Image,
+                Instructions = item.Object.Instructions,
+                PreparationTime = item.Object.PreparationTime,
+                CookingTempeture = item.Object.CookingTempeture,
+                Ingredients = item.Object.Ingredients,
+                Categories = item.Object.Categories
             }).ToList();
         }
 

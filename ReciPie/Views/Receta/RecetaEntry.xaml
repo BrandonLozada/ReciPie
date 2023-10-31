@@ -1,93 +1,116 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ReciPie.Views.Receta.RecetaEntry"
-             Padding="30,0,30,0">
+             x:Class="ReciPie.Views.Receta.RecetaEntry">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand">
-            
-            <Label Text="Agregar una receta"
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center"
-                   FontSize="Large"
-                   TextColor="black"
-                   Margin="0,0,0,20"/>
+        <Grid>
+            <StackLayout VerticalOptions="CenterAndExpand">
 
-            <Label Text="Personaliza los detalles de tu receta"
-                   FontFamily="Lumanosimo_Regular.ttf"
-                   FontAttributes="Bold"
-                   FontSize="20"
-                   HorizontalOptions ="CenterAndExpand"
-                   Margin="5"/>
+                <Label Text="Agregar una receta"
+           VerticalOptions="Center" 
+           HorizontalOptions="Center"
+           FontSize="Large"
+           TextColor="black"
+           Margin="0,0,0,20"/>
 
-            <Image Source="add.png"
-                   WidthRequest="100"
-                   HeightRequest="100"
-                   Margin="0,0,0,20"/>
-           
-            <Entry x:Name="Title"
-                   Placeholder="TÍtulo"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black" 
-                   TabIndex="1"/>
+                <Label Text="Personaliza los detalles de tu receta"
+           FontFamily="Lumanosimo_Regular.ttf"
+           FontAttributes="Bold"
+           FontSize="20"
+           HorizontalOptions ="CenterAndExpand"
+           Margin="5"/>
 
-            <Editor x:Name="Description"
-                   MaxLength="200"
-                   HeightRequest="80"
-                   Placeholder="Escribe una descripción de tu recipie"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black"
-                   Margin="0,-10,0,0"
-                   TabIndex="2"/>
+                <Image Source="add.png"
+           WidthRequest="100"
+           HeightRequest="100"
+           Margin="0,0,0,20"/>
 
-            <Entry x:Name="Instructions"
-                   MaxLength="200"
-                   Placeholder="¿Cuáles son las instrucciones?"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black" 
-                   TabIndex="3"/>
+                <Entry x:Name="Title"
+           Placeholder="TÍtulo"
+           FontAttributes="Bold"
+           FontSize="16"
+           TextColor="Black" 
+           TabIndex="1"/>
 
-            <Entry x:Name="PreparationTime"
-                   Placeholder="Tiempo de preparación"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black" 
-                   TabIndex="4"/>
+                <Editor x:Name="Description"
+           MaxLength="200"
+           HeightRequest="80"
+           Placeholder="Escribe una descripción de tu recipie"
+           FontAttributes="Bold"
+           FontSize="16"
+           TextColor="Black"
+           Margin="0,-10,0,0"
+           TabIndex="2"/>
 
-            <Entry x:Name="CookingTempeture"
-                   Keyboard="Numeric"
-                   Placeholder="A qué temperatura es la cocción o refrigeración"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black" 
-                   TabIndex="5"/>
+                <Entry x:Name="Instructions"
+           MaxLength="200"
+           Placeholder="¿Cuáles son las instrucciones?"
+           FontAttributes="Bold"
+           FontSize="16"
+           TextColor="Black" 
+           TabIndex="3"/>
 
-            <Entry x:Name="Ingredients"
-                   Placeholder="Menciona todos los ingredientes necesarios"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black" 
-                   TabIndex="6"/>
+                <Entry x:Name="PreparationTime"
+           Placeholder="Tiempo de preparación"
+           FontAttributes="Bold"
+           FontSize="16"
+           TextColor="Black" 
+           TabIndex="4"/>
 
-            <Entry x:Name="Categories"
-                   Placeholder="Categoría de la recipie - Opcional"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black" 
-                   TabIndex="7"/>
+                <Entry x:Name="CookingTempeture"
+           Keyboard="Numeric"
+           Placeholder="A qué temperatura es la cocción o refrigeración"
+           FontAttributes="Bold"
+           FontSize="16"
+           TextColor="Black" 
+           TabIndex="5"/>
 
-            <Button Text="Agregar receta"
-                    x:Name="BtnAddRecipie"
-                    Clicked="BtnAddRecipie_Clicked"
-                    CornerRadius="0"
-                    BackgroundColor="white"
-                    BorderWidth="1"
-                    BorderColor="black"
-                    TabIndex="8"
-                    Margin="0,25,0,0"/>
-        </StackLayout>
+                <Entry x:Name="Ingredients"
+           Placeholder="Menciona todos los ingredientes necesarios"
+           FontAttributes="Bold"
+           FontSize="16"
+           TextColor="Black" 
+           TabIndex="6"/>
+
+                <Entry x:Name="Categories"
+           Placeholder="Categoría de la recipie - Opcional"
+           FontAttributes="Bold"
+           FontSize="16"
+           TextColor="Black" 
+           TabIndex="7"/>
+
+                <Button Text="Agregar receta"
+            x:Name="BtnAddRecipie"
+            Clicked="BtnAddRecipie_Clicked"
+            CornerRadius="0"
+            BackgroundColor="white"
+            BorderWidth="1"
+            BorderColor="black"
+            TabIndex="8"
+            Margin="0,25,0,0"/>
+            </StackLayout>
+
+            <Grid 
+    x:Name="isVisible"
+    Opacity=".8" 
+    BackgroundColor="Black" 
+    IsVisible="False">
+                <ActivityIndicator 
+        x:Name="isLoading"
+        IsRunning="False" 
+        HorizontalOptions="Center"
+        Color="LightGray"
+        Margin="10,-25,10,10"/>
+                <Label Text="Estamos enviando la información. Espere un momento por favor..."
+           TextColor="LightGray"
+           FontFamily="Lumanosimo_Regular.ttf"
+           FontSize="15"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="Center"
+           Margin="40"
+           Padding="10,75,10,10"/>
+            </Grid>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

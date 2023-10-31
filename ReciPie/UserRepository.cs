@@ -16,15 +16,15 @@ namespace ReciPie
            authProvider = new FirebaseAuthProvider(new FirebaseConfig(webAPIKey));
         }
 
-        public async Task<bool> Register(string email,string name,string password)
+        // TODO: Retornar "UserCredentials" de Firebase Auth.
+        public async Task<string> Register(string email,string name,string password)
         {
-            
             var token = await authProvider.CreateUserWithEmailAndPasswordAsync(email, password, name);
             if (!string.IsNullOrEmpty(token.FirebaseToken))
             {
-                return true;
+                return token.FirebaseToken;
             }
-            return false;
+            return "";
         }
 
         public async Task<string>SignIn(string email,string password)

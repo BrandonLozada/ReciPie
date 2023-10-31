@@ -1,4 +1,5 @@
-﻿using ReciPie.Views.Receta;
+﻿using ReciPie.Models;
+using ReciPie.Views.Receta;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace ReciPie.Views.Producto
     public partial class RecipieListPage : ContentPage
     {
         ProductRepository productRepository = new ProductRepository();
-
+        RecipieRepository _RecipieRepository = new RecipieRepository();
 
         public RecipieListPage()
         {
@@ -28,11 +29,10 @@ namespace ReciPie.Views.Producto
 
         protected override async void OnAppearing()
         {
-            var products = await productRepository.GetAll();
+            var recipies = await _RecipieRepository.GetAll();
             ProductListView.ItemsSource = null;
-            ProductListView.ItemsSource = products;
+            ProductListView.ItemsSource = recipies;
             ProductListView.IsRefreshing = false;
-
         }
 
         private void AddToolBarItem_Clicked(object sender, EventArgs e)
@@ -46,13 +46,10 @@ namespace ReciPie.Views.Producto
             {
                 return;
             }
-            var prodct = e.Item as ProductoModel;
-            Navigation.PushAsync(new ProductDetails(prodct));
+            var recipie = e.Item as Recipie;
+            Navigation.PushAsync(new RecipieDetails(recipie));
             ((ListView)sender).SelectedItem = null;
-
         }
-
-
 
         private async void DeleteTapp_Tapped(object sender, EventArgs e)
         {

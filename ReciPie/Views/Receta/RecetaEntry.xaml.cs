@@ -21,6 +21,10 @@ namespace ReciPie.Views.Receta
 
         private async void BtnAddRecipie_Clicked(object sender, EventArgs e)
         {
+            // TODO: Agregar un Try - Catch en la petición.
+            isVisible.IsVisible = true;
+            isLoading.IsRunning = true;
+
             string title = Title.Text;
             string description = Description.Text;
             string instructions = Instructions.Text;
@@ -80,6 +84,8 @@ namespace ReciPie.Views.Receta
                     await DisplayAlert("Error", "Hubo un error al guardar la receta.", "Aceptar");
                 }
             }
+            isVisible.IsVisible = true;
+            isLoading.IsRunning = true;
         }
 
         public void Clear()

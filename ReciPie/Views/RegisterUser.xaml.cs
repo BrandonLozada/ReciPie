@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -63,16 +63,20 @@ namespace ReciPie.Views
                     return;
                 }
 
-                bool isSave = await _userRepository.Register(email, name, password);
+                string token = await _userRepository.Register(email, name, password);
                 
-                if (isSave)
+                if (!string.IsNullOrEmpty(token))
                 {
+                    // TODO: Guardar con "Preferences" UserCredentials de Firebase Auth.
+                    Preferences.Set("token", token);
+                    Preferences.Set("userPassword", password);
+                    Preferences.Set("userEmail", email);
                     await DisplayAlert("¡Bienvenido!", $"Haz creado tu cuenta e iniciado sesión en ReciPie", "Aceptar");
-                    await Navigation.PopModalAsync();
+                    await Navigation.PushAsync(new HomePage());
                 }
                 else
                 {
-                    await DisplayAlert("Advertencia", "Registro incorrecto", "Aceptar");
+                    await DisplayAlert("Error", "Hubo un error al crear la cuenta.", "Aceptar");
                 }
             }
             catch(Exception exception)
