@@ -8,7 +8,7 @@
             <BoxView Color="#831111"
               HeightRequest="80"
               Margin="0,0,0,20"></BoxView>
-            <Label Text="Bienvenido"
+            <Label Text="¡Bienvenido a ReciPie!"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"
                    FontSize="Large"
@@ -24,15 +24,9 @@
                     IsVisible="false"/>
             <Button Text="Recetas"
                     x:Name="BtnProductList"
-                    Clicked="BtnProductsList_Clicked"
+                    Clicked="BtnGoToMyRecipes_Clicked"
                     Margin="40,40,40,0"
                     BackgroundColor="#831111"
-                    TextColor="white"/>
-            <Button Text="Proveedores"
-                    x:Name="BtnProveedorList"
-                    Clicked="BtnProveedorList_Clicked"
-                    Margin="40,40,40,0"
-                    BackgroundColor="#833111"
                     TextColor="white"/>
             <BoxView HeightRequest="150"/>
             <Button Text="Cambiar Contraseña de la cuenta" 
@@ -42,9 +36,9 @@
                     BackgroundColor="black"
                     TextColor="White"></Button>
             <Button x:Name="Logout"
-                    Text="Cerrar Sesión"
+                    Text="Cerrar sesión"
                     TextColor="Black"
-                    Clicked="Logout_Clicked"
+                    Clicked="LogOut_Clicked"
                     Margin="40,30,40,0"
                     CornerRadius="0"
                     BackgroundColor="white"

@@ -7,6 +7,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ReciPie.Views.Producto;
+using ReciPie.Views.Receta;
 using ReciPie.Views.Student;
 using ReciPie.Views.Proveedor;
 
@@ -26,12 +27,9 @@ namespace ReciPie.Views
             Navigation.PushAsync(new StudentListPage());
         }
 
-
-        private void BtnProductsList_Clicked(object sender, EventArgs e)
+        private void BtnGoToMyRecipes_Clicked(object sender, EventArgs e)
         {
-            // Navigation.PushAsync(new ProductListPage());
             Navigation.PushAsync(new RecipieListPage());
-
         }
 
         private void BtnProveedorList_Clicked(object sender, EventArgs e)
@@ -44,10 +42,10 @@ namespace ReciPie.Views
             Navigation.PushAsync(new ChangePassword());
         }
 
-        void Logout_Clicked(System.Object sender, System.EventArgs e)
+        void LogOut_Clicked(System.Object sender, System.EventArgs e)
         {
             Preferences.Remove("MyFirebaseRefreshToken");
-            App.Current.MainPage = new NavigationPage(new LoginPage());
+            App.Current.MainPage = new NavigationPage(new SignInView());
         }
     }
 }

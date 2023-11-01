@@ -46,7 +46,7 @@ namespace ReciPie.Views
                     await DisplayAlert("Exito", "La contraseña se ha cambiado", "Ok");
                     Preferences.Set("token", newToken);
                     //Preferences.Clear();
-                    //await Navigation.PushAsync(new LoginPage());
+                    //await Navigation.PushAsync(new SignInView());
                 }
                 else
                 {

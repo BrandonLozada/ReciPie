@@ -12,7 +12,8 @@ namespace ReciPie
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            // TODO: Implementar la MainPage que tenemos en la anterior aplicación.
+            MainPage = new NavigationPage(new SignInView());
            
         }
 

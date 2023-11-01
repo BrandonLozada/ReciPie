@@ -1,22 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ReciPie.Views.RegisterUser"
+             x:Class="ReciPie.Views.SignUpView"
              NavigationPage.HasBackButton="True">
     <ContentPage.Content>
         <Grid>
             <StackLayout>
-                <BoxView Color="red"
-                  HeightRequest="80"
-                  Margin="0,0,0,20"/>
-                <Label Text="Crear cuenta"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center"
-                   FontSize="Large"
-                   TextColor="black"/>
-                <Image Source="crearcuenta.png"
+                <Image Source="recipie_logo.png"
+                   Margin="0,20,0,0"
                    WidthRequest="100"
                    HeightRequest="100"/>
+                <Label Text="Crea una cuenta"
+                   Margin="0,20,0,0"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="25"
+                   TextColor="Black"/>
+                <Label Text="¡Para ver las un mil recetas de tus platillos favoritos!"
+                   Margin="20,10,20,0"
+                   HorizontalTextAlignment="Center"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   FontSize="20"
+                   TextColor="Black"/>
                 <Label Text="Usuario"
                    Margin="43,0,0,0"
                    FontSize="18"
@@ -54,7 +60,8 @@
                    Margin="40,-10,40,10"
                    FontSize="16"
                    HeightRequest="50"></Entry>
-                <Button Text="Registrarse" x:Name="ButtonRegister"
+                <Button Text="Crear cuenta" 
+                        x:Name="ButtonRegister"
                     Clicked="ButtonRegister_Clicked"
                     Margin="40,30,40,10"
                     CornerRadius="0"

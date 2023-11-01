@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ReciPie.Models;
+using ReciPie.Repositories;
 
 namespace ReciPie.Views.Receta
 {

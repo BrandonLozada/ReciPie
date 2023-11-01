@@ -11,11 +11,11 @@ using Xamarin.Forms.Xaml;
 namespace ReciPie.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegisterUser : ContentPage
+    public partial class SignUpView : ContentPage
     {
 
-        UserRepository _userRepository = new UserRepository();
-        public RegisterUser()
+        UserRepository _UserRepository = new UserRepository();
+        public SignUpView()
         {
             InitializeComponent();
         }
@@ -63,7 +63,7 @@ namespace ReciPie.Views
                     return;
                 }
 
-                string token = await _userRepository.Register(email, name, password);
+                string token = await _UserRepository.Register(email, name, password);
                 
                 if (!string.IsNullOrEmpty(token))
                 {

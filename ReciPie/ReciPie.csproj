@@ -37,7 +37,7 @@
     <EmbeddedResource Update="Views\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LoginPage.xaml">
+    <EmbeddedResource Update="Views\SignInView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Producto\ProductDetails.xaml">
@@ -79,6 +79,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\SignInView.xaml.cs">
+      <DependentUpon>SignInView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Receta\RecipieDetails.xaml.cs">
       <DependentUpon>RecipieDetails.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,9 @@
     </Compile>
     <Compile Update="Views\Receta\RecetaEntry.xaml.cs">
       <DependentUpon>RecetaEntry.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SignUpView.xaml.cs">
+      <DependentUpon>SignUpView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

@@ -9,16 +9,17 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ReciPie.Views.Student;
+using ReciPie.Repositories;
 
 namespace ReciPie.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class SignInView : ContentPage
     {
-        UserRepository _userRepository = new UserRepository();
-        public ICommand TapCommand => new Command(async() => await Navigation.PushModalAsync(new RegisterUser()));
+        UserRepository _UserRepository = new UserRepository();
+        public ICommand TapCommand => new Command(async() => await Navigation.PushModalAsync(new SignUpView()));
 
-        public LoginPage()
+        public SignInView()
         {
             InitializeComponent();
             //bool hasKey = Preferences.ContainsKey("token");
@@ -52,7 +53,7 @@ namespace ReciPie.Views
                     await DisplayAlert("Advertencia", "Ingresa tu Contraseña", "Ok");
                     return;
                 }
-                string token = await _userRepository.SignIn(email, password);
+                string token = await _UserRepository.SignIn(email, password);
                 if (!string.IsNullOrEmpty(token))
                 {
                     Preferences.Set("token", token);
@@ -90,7 +91,7 @@ namespace ReciPie.Views
 
         private async void RegisterTap_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new RegisterUser());
+            await Navigation.PushAsync(new SignUpView());
         }
 
         private async void ForgotTap_Tapped(object sender, EventArgs e)

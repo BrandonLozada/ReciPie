@@ -1,5 +1,5 @@
 ﻿using ReciPie.Models;
-using ReciPie.Views.Receta;
+using ReciPie.Views.Producto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ReciPie.Views.Producto
+namespace ReciPie.Views.Receta
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RecipieListPage : ContentPage
