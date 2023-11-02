@@ -22,15 +22,6 @@ namespace ReciPie.Views
         public SignInView()
         {
             InitializeComponent();
-            //bool hasKey = Preferences.ContainsKey("token");
-            //if(hasKey)
-            //{
-            //    string token = Preferences.Get("token", "");
-            //    if(!string.IsNullOrEmpty(token))
-            //    {
-            //        Navigation.PushAsync(new HomePage());
-            //    }
-            //}
         }
 
         private async void BtnSignIn_Clicked(object sender, EventArgs e)

@@ -7,34 +7,35 @@
         <StackLayout>
             <BoxView Color="#831111"
               HeightRequest="80"
-              Margin="0,0,0,20"></BoxView>
+              Margin="0,0,0,20"/>
+            
             <Label Text="¡Bienvenido a ReciPie!"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
                    FontSize="Large"
                    TextColor="Black"/>
-            <Image Source="verificacion.png"
-                   WidthRequest="100"
-                   HeightRequest="100"/>
-            <!-- Visible - False - Students -->
-            <Button Text="Student List"
-                    x:Name="BtnStudentList"
-                    Clicked="BtnStudentList_Clicked"
-                    Margin="40,10,40,0"
-                    IsVisible="false"/>
-            <Button Text="Recetas"
+
+            <Button Text="Mis recetas"
                     x:Name="BtnProductList"
-                    Clicked="BtnGoToMyRecipes_Clicked"
+                    Clicked="GoToMyRecipesPage_Clicked"
                     Margin="40,40,40,0"
                     BackgroundColor="#831111"
                     TextColor="white"/>
-            <BoxView HeightRequest="150"/>
+
+            <Button Text="Mi perfil"
+                    x:Name="BtnMyProfile"
+                    Clicked="GoToMyProfilePage_Clicked"
+                    Margin="40,40,40,0"
+                    BackgroundColor="#831111"
+                    TextColor="white"/>
+
             <Button Text="Cambiar Contraseña de la cuenta" 
                     x:Name="BtnChangePassword"                   
                     Clicked="BtnChangePassword_Clicked"
                     Margin="40,30,40,0"
                     BackgroundColor="black"
-                    TextColor="White"></Button>
+                    TextColor="White"/>
+
             <Button x:Name="Logout"
                     Text="Cerrar sesión"
                     TextColor="Black"
@@ -44,6 +45,7 @@
                     BackgroundColor="white"
                     BorderWidth="1"
                     BorderColor="black"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

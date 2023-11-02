@@ -11,14 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\recipie_logo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ApplicationDefinition Include="Images\recipie_logo.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="FirebaseAuthentication.net" Version="3.7.2" />
     <PackageReference Include="FirebaseDatabase.net" Version="3.0.0" />
     <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
@@ -79,6 +71,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\MyProfilePage.xaml.cs">
+      <DependentUpon>MyProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SignInView.xaml.cs">
       <DependentUpon>SignInView.xaml</DependentUpon>
     </Compile>

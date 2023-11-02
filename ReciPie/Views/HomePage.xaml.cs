@@ -7,6 +7,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ReciPie.Views.Producto;
+using ReciPie.Views;
 using ReciPie.Views.Receta;
 using ReciPie.Views.Student;
 using ReciPie.Views.Proveedor;
@@ -27,9 +28,14 @@ namespace ReciPie.Views
             Navigation.PushAsync(new StudentListPage());
         }
 
-        private void BtnGoToMyRecipes_Clicked(object sender, EventArgs e)
+        private void GoToMyRecipesPage_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new RecipieListPage());
+        }        
+        
+        private void GoToMyProfilePage_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MyProfilePage());
         }
 
         private void BtnProveedorList_Clicked(object sender, EventArgs e)
