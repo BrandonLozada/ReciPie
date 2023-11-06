@@ -5,15 +5,14 @@
              NavigationPage.HasNavigationBar="false">
     <ContentPage.Content>
         <StackLayout>
-            <BoxView Color="#831111"
-              HeightRequest="80"
-              Margin="0,0,0,20"/>
-            
+
             <Label Text="¡Bienvenido a ReciPie!"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
                    FontSize="Large"
                    TextColor="Black"/>
+
+            <Label Text="No Auth Home Page" FontSize="Medium" TextColor="black"/>
 
             <Button Text="Mis recetas"
                     x:Name="BtnProductList"

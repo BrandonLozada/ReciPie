@@ -2,52 +2,44 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ReciPie.MainPage"
+             NavigationPage.HasNavigationBar="false"
              Title="ReciPie">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="LemonChiffon">
-            <Frame VerticalOptions="FillAndExpand"
-                   Margin="35"
-                   BackgroundColor="Ivory"
-                   CornerRadius="20">
-
-                <StackLayout VerticalOptions="Center" Spacing="40">
+        <StackLayout>
+            
+            <Label Text="¡Bienvenido a ReciPie!"
+                    FontAttributes="Bold"
+                    FontSize="40"
+                    HorizontalOptions="CenterAndExpand"
+                    Margin="5"/>
                     
-                    <Label Text="¡Bienvenido a ReciPie!"
-                           FontFamily="Lumanosimo_Regular"
-                           FontAttributes="Bold"
-                           FontSize="40"
-                           HorizontalOptions="CenterAndExpand"
-                           Margin="5"/>
-                    
-                    <Image Source="recipie_logo.png"
-                           WidthRequest="150"
-                           HeightRequest="150"/>
+            <Image Source="recipie_logo.png"
+                    WidthRequest="200"
+                    HeightRequest="200"/>
 
-                    <Button Text="Ya tengo cuenta"
-                            BackgroundColor="Bisque"
-                            TextColor="Black"
-                            CornerRadius="15"
-                            FontSize="Large"
-                            FontAttributes="Bold"
-                            Clicked="GoToSignInPage_Clicked"/>
+            <Button Text="Ya tengo cuenta"
+                    BackgroundColor="Bisque"
+                    TextColor="Black"
+                    CornerRadius="15"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    Clicked="GoToSignInPage_Clicked"/>
 
-                    <Button Text="Quiero registrarme"
-                            BackgroundColor="Bisque"
-                            TextColor="Black"
-                            CornerRadius="15"
-                            FontSize="Large"
-                            FontAttributes="Bold"
-                            Clicked="GoToSignUpPage_Clicked"/>
+            <Button Text="Quiero registrarme"
+                    BackgroundColor="Bisque"
+                    TextColor="Black"
+                    CornerRadius="15"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    Clicked="GoToSignUpPage_Clicked"/>
 
-                    <Button Text="Ver Recepies"
-                            BackgroundColor="Bisque"
-                            TextColor="Black"
-                            CornerRadius="15"
-                            FontSize="Large"
-                            FontAttributes="Bold"
-                            Clicked="GoToHomePage_Clicked"/>
-                </StackLayout>
-            </Frame>
+            <Button Text="Ver Recepies"
+                    BackgroundColor="Bisque"
+                    TextColor="Black"
+                    CornerRadius="15"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    Clicked="GoToNoAuthHomePage_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -17,5 +17,10 @@ namespace ReciPie.Views
         {
             InitializeComponent();
         }
+
+        private async void GoToEditProfilePage(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new EditProfilePage());
+        }
     }
 }

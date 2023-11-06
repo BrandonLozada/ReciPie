@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ReciPie.Views.SignUpView"
-             NavigationPage.HasBackButton="True">
+             NavigationPage.HasBackButton="True"
+             Title="Crea una cuenta">
     <ContentPage.Content>
         <Grid>
             <StackLayout>
@@ -16,7 +17,7 @@
                    HorizontalOptions="Center"
                    FontSize="25"
                    TextColor="Black"/>
-                <Label Text="¡Para ver las un mil recetas de tus platillos favoritos!"
+                <Label Text="¡Para ver las ún mil recetas de tus platillos favoritos!"
                    Margin="20,10,20,0"
                    HorizontalTextAlignment="Center"
                    VerticalOptions="Center" 
@@ -24,7 +25,7 @@
                    FontSize="20"
                    TextColor="Black"/>
                 <Label Text="Usuario"
-                   Margin="43,0,0,0"
+                   Margin="43,40,0,0"
                    FontSize="18"
                    TextColor="black"/>
                 <Entry Placeholder="Ingrese su nombre de usuario"
@@ -40,7 +41,7 @@
                    x:Name="TxtEmail"
                    Margin="40,-10,40,10"
                    FontSize="16"
-                   HeightRequest="50"></Entry>
+                   HeightRequest="50"/>
                 <Label Text="Contraseña"
                    Margin="43,0,0,0"
                    FontSize="18"
@@ -50,7 +51,7 @@
                    x:Name="TxtPassword"
                    Margin="40,-10,40,10"
                    FontSize="16"
-                   HeightRequest="50"></Entry>
+                   HeightRequest="50"/>
                 <Label Text="Confirme su contraseña"
                    Margin="43,0,0,0"
                    FontSize="18"
@@ -59,15 +60,15 @@
                    x:Name="TxtConfirmPass"
                    Margin="40,-10,40,10"
                    FontSize="16"
-                   HeightRequest="50"></Entry>
+                   HeightRequest="50"/>
                 <Button Text="Crear cuenta" 
                         x:Name="ButtonRegister"
-                    Clicked="ButtonRegister_Clicked"
-                    Margin="40,30,40,10"
-                    CornerRadius="0"
-                    BackgroundColor="white"
-                    BorderWidth="1"
-                    BorderColor="black"></Button>
+                        Clicked="ButtonRegister_Clicked"
+                        Margin="40,30,40,10"
+                        CornerRadius="0"
+                        BackgroundColor="white"
+                        BorderWidth="1"
+                        BorderColor="black"/>
             </StackLayout>
             
             <Grid 

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReciPie.Views.NoAuthHomePage"
+             Title="Inicio">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Entrar"
+                     Clicked="GoToSignInPage_Clicked"/>
+        <ToolbarItem Text="Registrarme"
+                     Clicked="GoToSignUpPage_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="No Auth Home Page" FontSize="Medium" TextColor="black"/>
+            <SearchBar Placeholder="Buscar"
+                       x:Name="TxtSearch"
+                       TextChanged="TxtSearch_TextChanged"
+                       SearchButtonPressed="TxtSearch_SearchButtonPressed"
+                       Margin="0,15,0,30"/>
+            <ListView x:Name="ProductListView" 
+                      ItemsSource="{Binding recipies}"
+                      HasUnevenRows="True"
+                      ItemTapped="ProductListView_ItemTapped"                  
+                      IsRefreshing="True"
+                      IsPullToRefreshEnabled="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <SwipeView>
+                                
+                                <StackLayout Padding="5">
+                                    <Frame BorderColor="Gray"
+                                           CornerRadius="5"
+                                           Padding="8">
+                                        <StackLayout>
+                                            <Grid Margin="0,5,0,0">
+                                                <Label Text="{Binding Categories}" Grid.Row="0" FontSize="Caption" TextColor="Black"/>
+                                                <Label Text="{Binding PreparationTime}" HorizontalOptions="End" Margin="0,0,25,0" Grid.Row="0" FontSize="Caption" TextColor="Black"/>
+                                                <Image Source="preparation_time.png"
+                                                       HorizontalOptions="End"
+                                                       Grid.Row="0"
+                                                       HeightRequest="20" 
+                                                       WidthRequest="20"/>
+                                            </Grid>
+                                            <Label Text="{Binding Title}" FontSize="Medium" FontAttributes="Bold" TextColor="black"/>
+                                            <BoxView Color="Gray"
+                                                     HeightRequest="0.5"
+                                                     HorizontalOptions="Fill"/>
+                                            <Label Text="{Binding Description}" FontSize="Subtitle" TextColor="Black"/>
+                                            <BoxView Color="Gray"
+                                                     HeightRequest="0.5"
+                                                     HorizontalOptions="Fill"/>
+                                            <Grid>
+                                                <Image Source="add_favorite.png"
+                                                       Grid.Column="0"
+                                                       HeightRequest="35"
+                                                       WidthRequest="35">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="FavoriteTap" CommandParameter="{Binding Id}"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                                <Image Source="add_bookmark.png" 
+                                                       Grid.Column="1"
+                                                       HeightRequest="35" 
+                                                       WidthRequest="35">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="BookmarkTapp" CommandParameter="{Binding Id}"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>                                
+                            </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ReciPie.Views.MyProfilePage"
              BackgroundColor="white">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Editar"
+                     Clicked="GoToEditProfilePage"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="40">
 
-            <Image Source="recipie_logo.png"
-                   WidthRequest="100"
-                   HeightRequest="100"/>
-            
             <Label Text="Mi perfil"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
@@ -17,71 +17,45 @@
                    Margin="0,40,0,40"
                    TextColor="black"/>
             
-            <Label Text="Título:"
-                   FontSize="18"
-                   TextColor="Black"
-                   FontAttributes="Bold"/>
-            
-            <Label x:Name="Title"
-                   FontSize="16"/>
-           
-            <BoxView 
-                   HeightRequest="1"
-                   Color="#f4f5f4"
-                   Margin ="2, 10, 2, 10"/>
-            
-            <Label Text="Temperatura de preparación:"
-                   FontSize="18"
-                   TextColor="Black"
-                   FontAttributes="Bold"/>
-            
-            <Label x:Name="CookingTempeture"
-                   FontSize="16"/>
-            
-            <BoxView 
-                   HeightRequest="1"
-                   Color="#f4f4f4"
-                   Margin ="2, 10, 2, 10"/>
-            
-            <Label Text="Tiempo de preparación:"
-                   FontSize="18"
-                   TextColor="Black"
-                   FontAttributes="Bold"/>
-            
-            <Label x:Name="PreparationTime"
-                   FontSize="16"/>
-            <BoxView 
-                   HeightRequest="1"
-                   Color="#f4f4f4"
-                   Margin ="2, 10, 2, 10"/>
+            <Image Source="profile.png"
+                   WidthRequest="100"
+                   HeightRequest="100"/>
 
-            <Label Text="Descripción:"
+            <Label Text="Nombre completo:"
                    FontSize="18"
                    TextColor="Black"
                    FontAttributes="Bold"/>
-            <Label x:Name="Description"
-                   FontSize="16"/>
 
-            <Label Text="Instrucciones:"
+            <Label Text="Usuario:"
                    FontSize="18"
                    TextColor="Black"
                    FontAttributes="Bold"/>
-            <Label x:Name="Instructions"
-                   FontSize="16"/>
 
-            <Label Text="Ingredientes:"
+            <Label Text="Biografía:"
                    FontSize="18"
                    TextColor="Black"
                    FontAttributes="Bold"/>
-            <Label x:Name="Ingredients"
-                   FontSize="16"/>
 
-            <Label Text="Categorías:"
+            <Label Text="Fecha de nacimiento:"
                    FontSize="18"
                    TextColor="Black"
                    FontAttributes="Bold"/>
-            <Label x:Name="Categories"
-                   FontSize="16"/>
+
+            <Label Text="Género:"
+                   FontSize="18"
+                   TextColor="Black"
+                   FontAttributes="Bold"/>
+
+            <Label Text="Ciudad:"
+                   FontSize="18"
+                   TextColor="Black"
+                   FontAttributes="Bold"/>
+
+            <Label Text="Número telefónico:"
+                   FontSize="18"
+                   TextColor="Black"
+                   FontAttributes="Bold"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

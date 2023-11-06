@@ -16,15 +16,16 @@ namespace ReciPie
         {
             InitializeComponent();
 
-            bool hasKey = Preferences.ContainsKey("token");
-            if (hasKey)
-            {
-                string token = Preferences.Get("token", "");
-                if (!string.IsNullOrEmpty(token))
-                {
-                    Navigation.PushAsync(new HomePage());
-                }
-            }
+            // TODO: En el momento que mostremos la aplicación, descomentamos esta parte del código.
+            //bool hasKey = Preferences.ContainsKey("token");
+            //if (hasKey)
+            //{
+            //    string token = Preferences.Get("token", "");
+            //    if (!string.IsNullOrEmpty(token))
+            //    {
+            //        Navigation.PushAsync(new HomePage());
+            //    }
+            //}
         }
 
         public async void GoToSignInPage_Clicked(object sender, EventArgs e)
@@ -37,9 +38,9 @@ namespace ReciPie
             await Navigation.PushAsync(new SignUpView());
         }        
         
-        public async void GoToHomePage_Clicked(object sender, EventArgs e)
+        public async void GoToNoAuthHomePage_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HomePage());
+            await Navigation.PushAsync(new NoAuthHomePage());
         }
     }
 }
