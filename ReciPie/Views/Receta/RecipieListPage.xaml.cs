@@ -47,7 +47,7 @@ namespace ReciPie.Views.Receta
                 return;
             }
             var recipie = e.Item as Recipie;
-            Navigation.PushAsync(new RecipieDetails(recipie));
+            Navigation.PushAsync(new RecipeDetailsPage(recipie));
             ((ListView)sender).SelectedItem = null;
         }
 
@@ -73,8 +73,6 @@ namespace ReciPie.Views.Receta
 
         private async void EditTap_Tapped(object sender, EventArgs e)
         {
-            //DisplayAlert("Edit", "Do you want to Edit?", "Ok");
-
             string id = ((TappedEventArgs)e).Parameter.ToString();
             var product = await productRepository.GetById(id);
             if (product == null)
@@ -122,7 +120,7 @@ namespace ReciPie.Views.Receta
             var product = await productRepository.GetById(id);
             if (product == null)
             {
-                await DisplayAlert("Advertencia", "Datos no encontrados", "Ok");
+                await DisplayAlert("Advertencia", "Datos no encontrados.", "Aceptar");
             }
             product.Id = id;
             await Navigation.PushModalAsync(new ProductEdit(product));
@@ -130,34 +128,21 @@ namespace ReciPie.Views.Receta
 
         private async void DeleteMenuItem_Clicked(object sender, EventArgs e)
         {
-            var response = await DisplayAlert("Advertencia", "¿Quiere eliminar este producto?", "Yes", "No");
+            var response = await DisplayAlert("Advertencia", "¿Estás seguro de eliminar esta receta?", "Sí", "No");
             if (response)
             {
                 string id = ((MenuItem)sender).CommandParameter.ToString();
                 bool isDelete = await productRepository.Delete(id);
                 if (isDelete)
                 {
-                    await DisplayAlert("Advertencia", "El producto ha sido eliminado", "Ok");
+                    await DisplayAlert("Advertencia", "La receta ha sido eliminado.", "Aceptar");
                     OnAppearing();
                 }
                 else
                 {
-                    await DisplayAlert("Error", "Error, producto no eliminado", "Ok");
+                    await DisplayAlert("Error", "Hubo un error en la eliminación de la receta.", "Aceptar");
                 }
             }
         }
-
-        private async void EditSwipeItem_Invoked(object sender, EventArgs e)
-        {
-            string id = ((MenuItem)sender).CommandParameter.ToString();
-            var product = await productRepository.GetById(id);
-            if (product == null)
-            {
-                await DisplayAlert("Warning", "Data not found.", "Ok");
-            }
-            product.Id = id;
-            await Navigation.PushModalAsync(new ProductEdit(product));
-        }
-
     }
 }
