@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ReciPie.Views.MyProfilePage"
-             BackgroundColor="white">
+             BackgroundColor="white"
+             Title="Mi perfil">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Editar"
                      Clicked="GoToEditProfilePage"/>
@@ -10,13 +11,6 @@
     <ContentPage.Content>
         <StackLayout Padding="40">
 
-            <Label Text="Mi perfil"
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center"
-                   FontSize="Large"
-                   Margin="0,40,0,40"
-                   TextColor="black"/>
-            
             <Image Source="profile.png"
                    WidthRequest="100"
                    HeightRequest="100"/>

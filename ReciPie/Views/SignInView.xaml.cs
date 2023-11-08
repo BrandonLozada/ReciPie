@@ -8,7 +8,6 @@ using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ReciPie.Views.Student;
 using ReciPie.Repositories;
 
 namespace ReciPie.Views

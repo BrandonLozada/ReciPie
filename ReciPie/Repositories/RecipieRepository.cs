@@ -34,7 +34,7 @@ namespace ReciPie
                 Id = item.Key,
                 Title = item.Object.Title,
                 Description = item.Object.Description,
-                //Image = item.Object.Image,
+                ImageCover = item.Object.ImageCover,
                 Instructions = item.Object.Instructions,
                 PreparationTime = item.Object.PreparationTime,
                 CookingTempeture = item.Object.CookingTempeture,
@@ -43,45 +43,43 @@ namespace ReciPie
             }).ToList();
         }
 
-        //public async Task<List<ProductoModel>> GetAllByName(string name)
-        //{
-        //    return (await firebaseClient.Child(nameof(ProductoModel)).OnceAsync<ProductoModel>()).Select(item => new ProductoModel
-        //    {
-        //        Nombre = item.Object.Nombre,
-        //        Cantidad = item.Object.Cantidad,
-        //        Image = item.Object.Image,
-        //        Id = item.Key,
-        //        Marca = item.Object.Marca,
-        //        Descripcion = item.Object.Descripcion
-        //    }).Where(c => c.Nombre.ToLower().Contains(name.ToLower())).ToList();
-        //}
+        public async Task<List<Recipie>> GetAllByName(string name)
+        {
+            return (await firebaseClient.Child("recipes").OnceAsync<Recipie>()).Select(item => new Recipie
+            {
+                Id = item.Key,
+                Title = item.Object.Title,
+                Description = item.Object.Description,
+                ImageCover = item.Object.ImageCover,
+                Instructions = item.Object.Instructions,
+                PreparationTime = item.Object.PreparationTime,
+                CookingTempeture = item.Object.CookingTempeture,
+                Ingredients = item.Object.Ingredients,
+                Categories = item.Object.Categories
+            }).Where(c => c.Title.ToLower().Contains(name.ToLower())).ToList();
+        }
 
-        //private object ProductoModel()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public async Task<Recipie> GetById(string id)
+        {
+            return (await firebaseClient.Child("recipes" + "/" + id).OnceSingleAsync<Recipie>());
+        }
 
-        //public async Task<ProductoModel> GetById(string id)
-        //{
-        //    return (await firebaseClient.Child(nameof(ProductoModel) + "/" + id).OnceSingleAsync<ProductoModel>());
-        //}
+        public async Task<bool> Update(Recipie recipie)
+        {
+            await firebaseClient.Child("recipes" + "/" + recipie.Id).PutAsync(JsonConvert.SerializeObject(recipie));
+            return true;
+        }
 
-        //public async Task<bool> Update(ProductoModel product)
-        //{
-        //    await firebaseClient.Child(nameof(ProductoModel) + "/" + product.Id).PutAsync(JsonConvert.SerializeObject(product));
-        //    return true;
-        //}
+        public async Task<bool> Delete(string id)
+        {
+            await firebaseClient.Child("recipes" + "/" + id).DeleteAsync();
+            return true;
+        }
 
-        //public async Task<bool> Delete(string id)
-        //{
-        //    await firebaseClient.Child(nameof(ProductoModel) + "/" + id).DeleteAsync();
-        //    return true;
-        //}
-
-        //public async Task<string> Upload(Stream img, string fileName)
-        //{
-        //    var image = await firebaseStorage.Child("Images").Child(fileName).PutAsync(img);
-        //    return image;
-        //}
+        public async Task<string> Upload(Stream img, string fileName)
+        {
+            var image = await firebaseStorage.Child("recipe-covers").Child(fileName).PutAsync(img);
+            return image;
+        }
     }
 }

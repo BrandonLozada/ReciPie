@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ReciPie.Views.Producto;
 using ReciPie.Views;
-using ReciPie.Views.Receta;
-using ReciPie.Views.Student;
-using ReciPie.Views.Proveedor;
 
 namespace ReciPie.Views
 {
@@ -23,24 +19,14 @@ namespace ReciPie.Views
             //LblUser.Text = Preferences.Get("userEmail", "default");
         }
 
-        private void BtnStudentList_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new StudentListPage());
-        }
-
         private void GoToMyRecipesPage_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new RecipieListPage());
+            Navigation.PushAsync(new MyRecipesPage());
         }        
         
         private void GoToMyProfilePage_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new MyProfilePage());
-        }
-
-        private void BtnProveedorList_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new ProveedorListPage());
         }
 
         private void BtnChangePassword_Clicked(object sender, EventArgs e)

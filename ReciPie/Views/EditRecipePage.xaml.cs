@@ -5,27 +5,41 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.IO;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using ReciPie.Models;
-using ReciPie.Repositories;
 
-namespace ReciPie.Views.Receta
+namespace ReciPie.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RecetaEntry : ContentPage
+
+    public partial class EditRecipePage : ContentPage
     {
+        MediaFile file;
         RecipieRepository _RecipieRepository = new RecipieRepository();
 
-        public RecetaEntry()
+        public EditRecipePage(Recipie recipie)
         {
             InitializeComponent();
+
+            Id.Text = recipie.Id;
+            Title.Text = recipie.Title;
+            Description.Text = recipie.Description;
+            Instructions.Text = recipie.Instructions;
+            PreparationTime.Text = recipie.PreparationTime;
+            CookingTempeture.Text = recipie.CookingTempeture;
+            Ingredients.Text = recipie.Ingredients;
+            Categories.Text = recipie.Categories;
         }
 
-        private async void BtnAddRecipie_Clicked(object sender, EventArgs e)
+        private async void BtnEditRecipie_Clicked(object sender, EventArgs e)
         {
             // TODO: Agregar un Try - Catch en la petición.
             isVisible.IsVisible = true;
             isLoading.IsRunning = true;
 
+            string id = Id.Text;
             string title = Title.Text;
             string description = Description.Text;
             string instructions = Instructions.Text;
@@ -61,43 +75,59 @@ namespace ReciPie.Views.Receta
             else if (string.IsNullOrEmpty(categories))
             {
                 await DisplayAlert("Advertencia", "Al menos una categoria es necesaria.", "Aceptar");
+            }    
+
+            Recipie recipie = new Recipie();
+            recipie.Id = id;
+            recipie.Title = title;
+            recipie.Description = description;
+            recipie.Instructions = instructions;
+            recipie.PreparationTime = preparationTime;
+            recipie.CookingTempeture = cookingTempeture;
+            recipie.Ingredients = ingredients;
+            recipie.Categories = categories;
+
+            if (file != null)
+            {
+                string imageCover = await _RecipieRepository.Upload(file.GetStream(), Path.GetFileName(file.Path));
+                recipie.ImageCover = imageCover;
+            }
+            
+            bool isUpdated = await _RecipieRepository.Update(recipie);
+
+            if (isUpdated)
+            {
+                await Navigation.PopAsync();
             }
             else
             {
-                AddRecipie recipie = new AddRecipie();
-                recipie.Title = title;
-                recipie.Description = description;
-                recipie.Instructions = instructions;
-                recipie.PreparationTime = preparationTime;
-                recipie.CookingTempeture = cookingTempeture;
-                recipie.Ingredients = ingredients;
-                recipie.Categories = categories;
-
-                var isSaved = await _RecipieRepository.AddRecipie(recipie);
-                
-                if (isSaved)
-                {
-                    await DisplayAlert("Información", "Receta agregada correctamente.", "Aceptar");
-                    Clear();
-                }
-                else
-                {
-                    await DisplayAlert("Error", "Hubo un error al guardar la receta.", "Aceptar");
-                }
+                await DisplayAlert("Error", "Hubo un error al actualizar la receta.", "Aceptar");
             }
-            isVisible.IsVisible = true;
-            isLoading.IsRunning = true;
+
         }
 
-        public void Clear()
+        private async void ImageTap_Tapped(object sender, EventArgs e)
         {
-            Title.Text = string.Empty;
-            Description.Text = string.Empty;
-            Instructions.Text = string.Empty;
-            PreparationTime.Text = string.Empty;
-            CookingTempeture.Text = string.Empty;
-            Ingredients.Text = string.Empty;
-            Categories.Text = string.Empty;
+            await CrossMedia.Current.Initialize();
+            try
+            {
+                file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
+                {
+                    PhotoSize = PhotoSize.Medium
+                });
+                if (file == null)
+                {
+                    return;
+                }
+                StudentImage.Source = ImageSource.FromStream(() =>
+                {
+                    return file.GetStream();
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

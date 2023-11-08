@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ReciPie
+namespace ReciPie.Models
 {
     public class ProductoModel
     {

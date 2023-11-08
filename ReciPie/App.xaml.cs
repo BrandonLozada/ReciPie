@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ReciPie.Views;
-using ReciPie.Views.Student;
 
 namespace ReciPie
 {

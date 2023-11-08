@@ -1,5 +1,4 @@
 ﻿using ReciPie.Models;
-using ReciPie.Views.Receta;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +13,6 @@ namespace ReciPie.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class NoAuthHomePage : ContentPage
 	{
-        ProductRepository productRepository = new ProductRepository();
         RecipieRepository _RecipieRepository = new RecipieRepository();
 
         public NoAuthHomePage()
@@ -52,7 +50,7 @@ namespace ReciPie.Views
                 return;
             }
             var recipie = e.Item as Recipie;
-            Navigation.PushAsync(new RecipieDetails(recipie));
+            Navigation.PushAsync(new RecipeDetailsPage(recipie));
             ((ListView)sender).SelectedItem = null;
         }
 
@@ -61,9 +59,9 @@ namespace ReciPie.Views
             string searchValue = TxtSearch.Text;
             if (!String.IsNullOrEmpty(searchValue))
             {
-                var products = await productRepository.GetAllByName(searchValue);
+                var recipies = await _RecipieRepository.GetAllByName(searchValue);
                 ProductListView.ItemsSource = null;
-                ProductListView.ItemsSource = products;
+                ProductListView.ItemsSource = recipies;
             }
             else
             {
@@ -76,9 +74,9 @@ namespace ReciPie.Views
             string searchValue = TxtSearch.Text;
             if (!String.IsNullOrEmpty(searchValue))
             {
-                var products = await productRepository.GetAllByName(searchValue);
+                var recipies = await _RecipieRepository.GetAllByName(searchValue);
                 ProductListView.ItemsSource = null;
-                ProductListView.ItemsSource = products;
+                ProductListView.ItemsSource = recipies;
             }
             else
             {
