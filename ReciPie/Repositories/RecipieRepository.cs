@@ -64,9 +64,21 @@ namespace ReciPie
             return (await firebaseClient.Child("recipes" + "/" + id).OnceSingleAsync<Recipie>());
         }
 
-        public async Task<bool> Update(Recipie recipie)
+        public async Task<bool> Update(string id, AddRecipie recipie)
         {
-            await firebaseClient.Child("recipes" + "/" + recipie.Id).PutAsync(JsonConvert.SerializeObject(recipie));
+            //string id = recipie.Id;
+
+            //AddRecipie payload = new AddRecipie();
+            //payload.Title = recipie.Title;
+            //payload.Description = recipie.Description;
+            //payload.ImageCover = recipie.ImageCover;
+            //payload.Instructions = recipie.Instructions;
+            //payload.PreparationTime = recipie.PreparationTime;
+            //payload.CookingTempeture = recipie.CookingTempeture;
+            //payload.Ingredients = recipie.Ingredients;
+            //payload.Categories = recipie.Categories;
+
+            await firebaseClient.Child("recipes" + "/" + id).PutAsync(JsonConvert.SerializeObject(recipie));
             return true;
         }
 

@@ -33,17 +33,19 @@ namespace ReciPie.Views
                 string email = TxtEmail.Text;
                 string password = TxtPassword.Text;
 
-                if (String.IsNullOrEmpty(email))
+                if (string.IsNullOrEmpty(email))
                 {
                     await DisplayAlert("Advertencia", "Ingresa tu Email", "Ok");
                     return;
                 }
-                if (String.IsNullOrEmpty(password))
+                if (string.IsNullOrEmpty(password))
                 {
                     await DisplayAlert("Advertencia", "Ingresa tu Contraseña", "Ok");
                     return;
                 }
+
                 string token = await _UserRepository.SignIn(email, password);
+
                 if (!string.IsNullOrEmpty(token))
                 {
                     Preferences.Set("token", token);

@@ -7,14 +7,14 @@
         <Grid>
             <StackLayout VerticalOptions="CenterAndExpand">
 
-            <Label Text="Actualiza los detalles de tu receta"
+                <Label Text="Actualiza los detalles de tu receta"
                    FontFamily="Lumanosimo_Regular.ttf"
                    FontAttributes="Bold"
                    FontSize="20"
                    HorizontalOptions ="CenterAndExpand"
                    Margin="5"/>
-            
-            <Image x:Name="StudentImage"
+                
+                <Image x:Name="ImageCover"
                    HeightRequest="100" 
                    BackgroundColor="LightBlue"
                    Margin="20,0,20,0">

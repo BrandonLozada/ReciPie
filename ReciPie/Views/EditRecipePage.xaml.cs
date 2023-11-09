@@ -9,6 +9,7 @@ using System.IO;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using ReciPie.Models;
+using Xamarin.Essentials;
 
 namespace ReciPie.Views
 {
@@ -76,9 +77,9 @@ namespace ReciPie.Views
             {
                 await DisplayAlert("Advertencia", "Al menos una categoria es necesaria.", "Aceptar");
             }    
-
-            Recipie recipie = new Recipie();
-            recipie.Id = id;
+            // Preferences.Get()
+            AddRecipie recipie = new AddRecipie();
+            //recipie.Id = id;
             recipie.Title = title;
             recipie.Description = description;
             recipie.Instructions = instructions;
@@ -93,7 +94,7 @@ namespace ReciPie.Views
                 recipie.ImageCover = imageCover;
             }
             
-            bool isUpdated = await _RecipieRepository.Update(recipie);
+            bool isUpdated = await _RecipieRepository.Update(id, recipie);
 
             if (isUpdated)
             {
@@ -109,6 +110,7 @@ namespace ReciPie.Views
         private async void ImageTap_Tapped(object sender, EventArgs e)
         {
             await CrossMedia.Current.Initialize();
+
             try
             {
                 file = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions
@@ -119,7 +121,8 @@ namespace ReciPie.Views
                 {
                     return;
                 }
-                StudentImage.Source = ImageSource.FromStream(() =>
+
+                ImageCover.Source = ImageSource.FromStream(() =>
                 {
                     return file.GetStream();
                 });

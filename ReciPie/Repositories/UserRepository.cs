@@ -3,6 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Firebase.Auth.Providers;
+using Firebase.Auth.Repository;
+using System.Linq;
+using Xamarin.Essentials;
+using ReciPie.Views;
 
 namespace ReciPie
 {
