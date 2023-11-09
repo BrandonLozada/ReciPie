@@ -7,6 +7,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ReciPie.Models;
 using ReciPie.Repositories;
+using Firebase.Auth;
+using Xamarin.Essentials;
+using Newtonsoft.Json;
+using System.Linq.Expressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ReciPie.Views
 {
@@ -71,6 +76,8 @@ namespace ReciPie.Views
                 isVisible.IsVisible = true;
                 isLoading.IsRunning = true;
 
+                var UserCredential = JsonConvert.DeserializeObject<FirebaseAuth>(Preferences.Get("UserCredential", ""));
+
                 AddRecipie recipie = new AddRecipie();
                 recipie.Title = title;
                 recipie.Description = description;
@@ -79,6 +86,7 @@ namespace ReciPie.Views
                 recipie.CookingTempeture = cookingTempeture;
                 recipie.Ingredients = ingredients;
                 recipie.Categories = categories;
+                recipie.UserId = UserCredential.User.LocalId;
 
                 var isSaved = await _RecipieRepository.AddRecipie(recipie);
                 

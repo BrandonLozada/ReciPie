@@ -1,4 +1,5 @@
-﻿using ReciPie.Repositories;
+﻿using Newtonsoft.Json;
+using ReciPie.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,14 +64,15 @@ namespace ReciPie.Views
                     return;
                 }
 
-                string token = await _UserRepository.Register(email, name, password);
-                
-                if (!string.IsNullOrEmpty(token))
+                var UserCredential = await _UserRepository.Register(email, name, password);
+
+                if (!UserCredential.Equals(new object()))
                 {
-                    // TODO: Guardar con "Preferences" UserCredentials de Firebase Auth.
-                    Preferences.Set("token", token);
+                    string jsonString = JsonConvert.SerializeObject(UserCredential);
+                    Preferences.Set("UserCredential", jsonString);
                     Preferences.Set("userPassword", password);
                     Preferences.Set("userEmail", email);
+
                     await DisplayAlert("¡Bienvenido!", $"Haz creado tu cuenta e iniciado sesión en ReciPie", "Aceptar");
                     await Navigation.PushAsync(new HomePage());
                 }

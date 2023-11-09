@@ -9,6 +9,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ReciPie.Repositories;
+using Newtonsoft.Json;
 
 namespace ReciPie.Views
 {
@@ -44,13 +45,15 @@ namespace ReciPie.Views
                     return;
                 }
 
-                string token = await _UserRepository.SignIn(email, password);
+                var UserCredential = await _UserRepository.SignIn(email, password);
 
-                if (!string.IsNullOrEmpty(token))
+                if (!UserCredential.Equals(new object()))
                 {
-                    Preferences.Set("token", token);
+                    string jsonString = JsonConvert.SerializeObject(UserCredential);
+                    Preferences.Set("UserCredential", jsonString);
                     Preferences.Set("userPassword", password);
                     Preferences.Set("userEmail", email);
+
                     await Navigation.PushAsync(new HomePage());
                 }
                 else

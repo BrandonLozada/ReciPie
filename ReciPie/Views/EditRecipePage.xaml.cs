@@ -10,6 +10,8 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using ReciPie.Models;
 using Xamarin.Essentials;
+using Firebase.Auth;
+using Newtonsoft.Json;
 
 namespace ReciPie.Views
 {
@@ -76,10 +78,11 @@ namespace ReciPie.Views
             else if (string.IsNullOrEmpty(categories))
             {
                 await DisplayAlert("Advertencia", "Al menos una categoria es necesaria.", "Aceptar");
-            }    
-            // Preferences.Get()
+            }
+            
+            var UserCredential = JsonConvert.DeserializeObject<FirebaseAuth>(Preferences.Get("UserCredential", ""));
+            
             AddRecipie recipie = new AddRecipie();
-            //recipie.Id = id;
             recipie.Title = title;
             recipie.Description = description;
             recipie.Instructions = instructions;
@@ -87,6 +90,7 @@ namespace ReciPie.Views
             recipie.CookingTempeture = cookingTempeture;
             recipie.Ingredients = ingredients;
             recipie.Categories = categories;
+            recipie.UserId = UserCredential.User.LocalId;
 
             if (file != null)
             {

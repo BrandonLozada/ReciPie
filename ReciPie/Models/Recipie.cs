@@ -4,7 +4,6 @@ namespace ReciPie.Models
 {
     public class Recipie
     {
-        // public Guid id { get; set; }
         public string Id { get; set; }
         public string Title { get; set; }
         public string ImageCover { get; set; }
