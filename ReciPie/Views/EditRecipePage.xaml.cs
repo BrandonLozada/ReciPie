@@ -29,7 +29,7 @@ namespace ReciPie.Views
 
             Id.Text = recipie.Id;
             Title.Text = recipie.Title;
-            //ImageCover.Source = recipie.ImageCover;
+            ImageCover.Source = recipie.ImageCover;
             Description.Text = recipie.Description;
             Instructions.Text = recipie.Instructions;
             PreparationTime.Text = recipie.PreparationTime;
@@ -95,7 +95,7 @@ namespace ReciPie.Views
 
                 AddRecipie recipie = new AddRecipie();
                 recipie.Title = title;
-                recipie.ImageCover = 
+               // recipie.ImageCover = 
                 recipie.Description = description;
                 recipie.Instructions = instructions;
                 recipie.PreparationTime = preparationTime;
