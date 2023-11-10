@@ -33,7 +33,7 @@
                     FontAttributes="Bold"
                     Clicked="GoToSignUpPage_Clicked"/>
 
-            <Button Text="Ver Recepies"
+            <Button Text="Ver ReciPies"
                     BackgroundColor="Bisque"
                     TextColor="Black"
                     CornerRadius="15"

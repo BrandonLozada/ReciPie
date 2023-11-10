@@ -19,7 +19,7 @@ namespace ReciPie.Views
         {
             InitializeComponent();
 
-            ProductListView.RefreshCommand = new Command(() =>
+            RecipieListView.RefreshCommand = new Command(() =>
             {
                 OnAppearing();
             });
@@ -28,9 +28,9 @@ namespace ReciPie.Views
         protected override async void OnAppearing()
         {
             var recipies = await _RecipieRepository.GetAll();
-            ProductListView.ItemsSource = null;
-            ProductListView.ItemsSource = recipies;
-            ProductListView.IsRefreshing = false;
+            RecipieListView.ItemsSource = null;
+            RecipieListView.ItemsSource = recipies;
+            RecipieListView.IsRefreshing = false;
         }
 
         public async void GoToSignInPage_Clicked(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace ReciPie.Views
             await Navigation.PushAsync(new SignUpView());
         }
 
-        private void ProductListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void RecipieListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)
             {
@@ -60,8 +60,8 @@ namespace ReciPie.Views
             if (!String.IsNullOrEmpty(searchValue))
             {
                 var recipies = await _RecipieRepository.GetAllByName(searchValue);
-                ProductListView.ItemsSource = null;
-                ProductListView.ItemsSource = recipies;
+                RecipieListView.ItemsSource = null;
+                RecipieListView.ItemsSource = recipies;
             }
             else
             {
@@ -75,8 +75,8 @@ namespace ReciPie.Views
             if (!String.IsNullOrEmpty(searchValue))
             {
                 var recipies = await _RecipieRepository.GetAllByName(searchValue);
-                ProductListView.ItemsSource = null;
-                ProductListView.ItemsSource = recipies;
+                RecipieListView.ItemsSource = null;
+                RecipieListView.ItemsSource = recipies;
             }
             else
             {

@@ -13,9 +13,9 @@ namespace ReciPie.Models
         public string CookingTempeture { get; set; }
         public string Ingredients { get; set; }
         public string Categories { get; set; }
+        public string UserId { get; set; }
 
         // public bool IsPublished { get; set; }
         // public DateTime CreatedAt { get; set; }
-        // public Guid UserId { get; set; }
     }
 }

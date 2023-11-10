@@ -39,11 +39,12 @@ namespace ReciPie
                 PreparationTime = item.Object.PreparationTime,
                 CookingTempeture = item.Object.CookingTempeture,
                 Ingredients = item.Object.Ingredients,
-                Categories = item.Object.Categories
+                Categories = item.Object.Categories,
+                UserId = item.Object.UserId
             }).ToList();
         }
 
-        public async Task<List<Recipie>> GetAllByName(string name)
+        public async Task<List<Recipie>> GetAllByName(string title)
         {
             return (await firebaseClient.Child("recipes").OnceAsync<Recipie>()).Select(item => new Recipie
             {
@@ -55,8 +56,27 @@ namespace ReciPie
                 PreparationTime = item.Object.PreparationTime,
                 CookingTempeture = item.Object.CookingTempeture,
                 Ingredients = item.Object.Ingredients,
-                Categories = item.Object.Categories
-            }).Where(c => c.Title.ToLower().Contains(name.ToLower())).ToList();
+                Categories = item.Object.Categories,
+                UserId = item.Object.UserId
+
+            }).Where(c => c.Title.ToLower().Contains(title.ToLower())).ToList();
+        }
+
+        public async Task<List<Recipie>> GetAllMyRecipies(string userId)
+        {
+            return (await firebaseClient.Child("recipes").OnceAsync<Recipie>()).Select(item => new Recipie
+            {
+                Id = item.Key,
+                Title = item.Object.Title,
+                Description = item.Object.Description,
+                ImageCover = item.Object.ImageCover,
+                Instructions = item.Object.Instructions,
+                PreparationTime = item.Object.PreparationTime,
+                CookingTempeture = item.Object.CookingTempeture,
+                Ingredients = item.Object.Ingredients,
+                Categories = item.Object.Categories,
+                UserId = item.Object.UserId
+            }).Where(c => c.UserId.Equals(userId)).ToList();
         }
 
         public async Task<Recipie> GetById(string id)
@@ -66,18 +86,6 @@ namespace ReciPie
 
         public async Task<bool> Update(string id, AddRecipie recipie)
         {
-            //string id = recipie.Id;
-
-            //AddRecipie payload = new AddRecipie();
-            //payload.Title = recipie.Title;
-            //payload.Description = recipie.Description;
-            //payload.ImageCover = recipie.ImageCover;
-            //payload.Instructions = recipie.Instructions;
-            //payload.PreparationTime = recipie.PreparationTime;
-            //payload.CookingTempeture = recipie.CookingTempeture;
-            //payload.Ingredients = recipie.Ingredients;
-            //payload.Categories = recipie.Categories;
-
             await firebaseClient.Child("recipes" + "/" + id).PutAsync(JsonConvert.SerializeObject(recipie));
             return true;
         }

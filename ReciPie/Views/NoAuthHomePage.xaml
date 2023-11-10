@@ -16,10 +16,10 @@
                        TextChanged="TxtSearch_TextChanged"
                        SearchButtonPressed="TxtSearch_SearchButtonPressed"
                        Margin="0,15,0,30"/>
-            <ListView x:Name="ProductListView" 
+            <ListView x:Name="RecipieListView" 
                       ItemsSource="{Binding recipies}"
                       HasUnevenRows="True"
-                      ItemTapped="ProductListView_ItemTapped"                  
+                      ItemTapped="RecipieListView_ItemTapped"                  
                       IsRefreshing="True"
                       IsPullToRefreshEnabled="True">
                 <ListView.ItemTemplate>

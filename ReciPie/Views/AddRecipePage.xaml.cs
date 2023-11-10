@@ -12,6 +12,7 @@ using Xamarin.Essentials;
 using Newtonsoft.Json;
 using System.Linq.Expressions;
 using static System.Net.Mime.MediaTypeNames;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace ReciPie.Views
 {
@@ -88,12 +89,12 @@ namespace ReciPie.Views
                 recipie.Categories = categories;
                 recipie.UserId = UserCredential.User.LocalId;
 
-                var isSaved = await _RecipieRepository.AddRecipie(recipie);
+                bool isSaved = await _RecipieRepository.AddRecipie(recipie);
                 
                 if (isSaved)
                 {
-                    await DisplayAlert("Información", "Receta agregada correctamente.", "Aceptar");
                     await Navigation.PushAsync(new MyRecipesPage());
+                    await this.DisplayToastAsync("Receta agregada correctamente.", 6000);
                 }
                 else
                 {
@@ -102,7 +103,7 @@ namespace ReciPie.Views
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Error", "Hubo un error al guardar la receta.", "Aceptar");
+                await DisplayAlert("Error", $"Hubo un error al agregar la receta.\n{ex.Message}", "Aceptar");
             }
             finally
             {

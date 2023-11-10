@@ -16,13 +16,17 @@ namespace ReciPie.Views
         public HomePage()
         {
             InitializeComponent();
-            //LblUser.Text = Preferences.Get("userEmail", "default");
         }
 
         private void GoToMyRecipesPage_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new MyRecipesPage());
-        }        
+        }             
+        
+        private void GoToAddRecipiePage_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddRecipePage());
+        }
         
         private void GoToMyProfilePage_Clicked(object sender, EventArgs e)
         {

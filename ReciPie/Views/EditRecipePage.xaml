@@ -1,98 +1,142 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="ReciPie.Views.EditRecipePage"
              Title="Edita receta">
     <ContentPage.Content>
         <Grid>
-            <StackLayout VerticalOptions="CenterAndExpand">
+            <ScrollView HeightRequest="3000">
+                <StackLayout Padding="20,20,20,0">
 
-                <Label Text="Actualiza los detalles de tu receta"
-                   FontFamily="Lumanosimo_Regular.ttf"
-                   FontAttributes="Bold"
-                   FontSize="20"
-                   HorizontalOptions ="CenterAndExpand"
-                   Margin="5"/>
+                    <Label Text="Actualiza los detalles de tu ReciPie"
+                           FontFamily="Lumanosimo_Regular.ttf"
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           HorizontalOptions ="CenterAndExpand"
+                           Padding="0,20,0,20"/>
+
+                    <Label Text="Portada"
+                           FontSize="18"
+                           TextColor="black"/>
+
+                    <Frame VerticalOptions="Center"
+                           BackgroundColor="WhiteSmoke"
+                           CornerRadius="10"
+                           Margin="0,0,0,15">
+                        <StackLayout VerticalOptions="FillAndExpand">
+                            <Grid>
+                                <Label Text="Presiona para subir una portada para tu ReciPie"
+                                       FontSize="16"
+                                       FontAttributes="Italic"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="Black"/>
+                            </Grid>
+                            <Image x:Name="ImageCover"
+                                   HeightRequest="100" 
+                                   BackgroundColor="Transparent">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="ImageTap" Tapped="ImageTap_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </Frame>
+
+                    <Entry x:Name="Id"
+                           IsVisible="false"/>
+
+                    <Label Text="Título"
+                           FontSize="18"
+                           TextColor="black"/>
+                    
+                    <Entry x:Name="Title"
+                           Placeholder="TÍtulo"
+                           FontSize="16"
+                           HeightRequest="50"
+                           FontAttributes="Italic" 
+                           TabIndex="1"/>
+
+                    <Label Text="Descripción"
+                           FontSize="18"
+                           TextColor="black"/>
+
+                    <Editor x:Name="Description"
+                            MaxLength="200"
+                            Placeholder="Escribe una descripción para tu ReciPie"
+                            FontSize="16"
+                            HeightRequest="80"
+                            FontAttributes="Italic"
+                            TabIndex="2"/>
+
+                    <Label Text="Instrucciones"
+                           FontSize="18"
+                           TextColor="black"/>
+
+                    <Entry x:Name="Instructions"
+                           MaxLength="200"
+                           Placeholder="¿Cuáles son las instrucciones?"
+                           FontSize="16"
+                           HeightRequest="80"
+                           FontAttributes="Italic"
+                           TabIndex="3"/>
+
+                    <Label Text="Tiempo de preparación"
+                           FontSize="18"
+                           TextColor="black"/>
+
+                    <Entry x:Name="PreparationTime"
+                           Placeholder="Tiempo de preparación (en minutos)"
+                           FontSize="16"
+                           HeightRequest="50"
+                           FontAttributes="Italic" 
+                           TabIndex="4"/>
+
+                    <Label Text="Temperatura"
+                           FontSize="18"
+                           TextColor="black"/>
+
+                    <Entry x:Name="CookingTempeture"
+                           Keyboard="Numeric"
+                           Placeholder="A qué temperatura es la cocción o refrigeración"
+                           FontSize="16"
+                           HeightRequest="50"
+                           FontAttributes="Italic" 
+                           TabIndex="5"/>
+
+                    <Label Text="Ingredientes"
+                           FontSize="18"
+                           TextColor="black"/>
+
+                    <Entry x:Name="Ingredients"
+                           Placeholder="Menciona todos los ingredientes necesarios"
+                           FontSize="16"
+                           HeightRequest="50"
+                           FontAttributes="Italic" 
+                           TabIndex="6"/>
+
+                    <Label Text="Categorias"
+                           FontSize="18"
+                           TextColor="black"/>
+
+                    <Entry x:Name="Categories"
+                            Placeholder="Categoría de la ReciPie - Opcional"
+                            FontSize="16"
+                            HeightRequest="50"
+                            FontAttributes="Italic"  
+                            TabIndex="7"/>
+
+                    <Button Text="Editar receta"
+                            x:Name="BtnEditRecipie"
+                            Clicked="BtnEditRecipie_Clicked" 
+                            CornerRadius="0"
+                            BackgroundColor="white"
+                            BorderWidth="1"
+                            BorderColor="black"
+                            Margin="0,20,0,10"/>
+                </StackLayout>               
                 
-                <Image x:Name="ImageCover"
-                   HeightRequest="100" 
-                   BackgroundColor="LightBlue"
-                   Margin="20,0,20,0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer x:Name="ImageTap" Tapped="ImageTap_Tapped"/>
-                </Image.GestureRecognizers>
-            </Image>
-            
-            <Label Text="Haz Click Aquí para subir Imágen"
-                   Margin="100,-80,0,0"
-                   TextColor="Gray"/>
+            </ScrollView>
 
-            <Entry x:Name="Id"
-                   IsVisible="false"/>
-
-            <Entry x:Name="Title"
-                   Placeholder="TÍtulo"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black" 
-                   TabIndex="1"/>
-
-            <Editor x:Name="Description"
-                    MaxLength="200"
-                    HeightRequest="80"
-                    Placeholder="Escribe una descripción de tu recipie"
-                    FontAttributes="Bold"
-                    FontSize="16"
-                    TextColor="Black"
-                    Margin="0,-10,0,0"
-                    TabIndex="2"/>
-
-            <Entry x:Name="Instructions"
-                   MaxLength="200"
-                   Placeholder="¿Cuáles son las instrucciones?"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black" 
-                   TabIndex="3"/>
-
-            <Entry x:Name="PreparationTime"
-                   Placeholder="Tiempo de preparación"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black" 
-                   TabIndex="4"/>
-
-            <Entry x:Name="CookingTempeture"
-                   Keyboard="Numeric"
-                   Placeholder="A qué temperatura es la cocción o refrigeración"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black" 
-                   TabIndex="5"/>
-
-            <Entry x:Name="Ingredients"
-                   Placeholder="Menciona todos los ingredientes necesarios"
-                   FontAttributes="Bold"
-                   FontSize="16"
-                   TextColor="Black" 
-                   TabIndex="6"/>
-
-            <Entry x:Name="Categories"
-                    Placeholder="Categoría de la recipie - Opcional"
-                    FontAttributes="Bold"
-                    FontSize="16"
-                    TextColor="Black" 
-                    TabIndex="7"/>
-            
-            <Button Text="Editar receta"
-                    x:Name="BtnEditRecipie"
-                    Clicked="BtnEditRecipie_Clicked" 
-                    CornerRadius="0"
-                    BackgroundColor="white"
-                    BorderWidth="1"
-                    BorderColor="black"
-                    Margin="0,25,0,0"/>
-        </StackLayout>
 
         <Grid x:Name="isVisible"
           Opacity=".8" 

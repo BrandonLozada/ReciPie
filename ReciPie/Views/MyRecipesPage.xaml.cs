@@ -1,10 +1,14 @@
-﻿using ReciPie.Models;
+﻿using Firebase.Auth;
+using Firebase.Database;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using ReciPie.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,7 +23,7 @@ namespace ReciPie.Views
         {
             InitializeComponent();
 
-            ProductListView.RefreshCommand = new Command(() =>
+            RecipieListView.RefreshCommand = new Command(() =>
             {
                 OnAppearing();
             });
@@ -27,10 +31,12 @@ namespace ReciPie.Views
 
         protected override async void OnAppearing()
         {
-            var recipies = await _RecipieRepository.GetAll();
-            ProductListView.ItemsSource = null;
-            ProductListView.ItemsSource = recipies;
-            ProductListView.IsRefreshing = false;
+            var UserCredential = JsonConvert.DeserializeObject<FirebaseAuth>(Preferences.Get("UserCredential", ""));
+
+            var recipies = await _RecipieRepository.GetAllMyRecipies(UserCredential.User.LocalId);
+            RecipieListView.ItemsSource = null;
+            RecipieListView.ItemsSource = recipies;
+            RecipieListView.IsRefreshing = false;
         }
 
         private void AddToolBarItem_Clicked(object sender, EventArgs e)
@@ -38,7 +44,7 @@ namespace ReciPie.Views
             Navigation.PushAsync(new AddRecipePage());
         }
 
-        private void ProductListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void RecipieListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             if (e.Item == null)
             {
@@ -52,19 +58,19 @@ namespace ReciPie.Views
         private async void DeleteTapp_Tapped(object sender, EventArgs e)
         {
 
-            var response = await DisplayAlert("Advertencia", "¿Quieres eliminar este Producto?", "Yes", "No");
+            var response = await DisplayAlert("Advertencia", "¿Quieres eliminar esta ReciPie?", "Sí", "No");
             if (response)
             {
                 string id = ((TappedEventArgs)e).Parameter.ToString();
                 bool isDelete = await _RecipieRepository.Delete(id);
                 if (isDelete)
                 {
-                    await DisplayAlert("Advertencia", "El Producto ha sido eliminado", "Ok");
+                    await DisplayAlert("Advertencia", "Se ha sido eliminado.", "Aceptar");
                     OnAppearing();
                 }
                 else
                 {
-                    await DisplayAlert("Error", "No se eliminó el Producto", "Ok");
+                    await DisplayAlert("Error", "No se eliminó la ReciPie.", "Aceptar");
                 }
             }
         }
@@ -100,9 +106,22 @@ namespace ReciPie.Views
             string searchValue = TxtSearch.Text;
             if (!string.IsNullOrEmpty(searchValue))
             {
-                var recipies = await _RecipieRepository.GetAllByName(searchValue);
-                ProductListView.ItemsSource = null;
-                ProductListView.ItemsSource = recipies;
+                var UserCredential = JsonConvert.DeserializeObject<FirebaseAuth>(Preferences.Get("UserCredential", ""));
+
+                //List<Recipie> recipies = new List<Recipie>();
+                //recipies = await _RecipieRepository.GetAllMyRecipies(UserCredential.User.LocalId);
+
+                IEnumerable<Recipie> recipies = Enumerable.Empty<Recipie>();
+                recipies = await _RecipieRepository.GetAllMyRecipies(UserCredential.User.LocalId);
+
+                //FirebaseResponse response = await firebaseClient.GetAsync("suppliers");
+                //JObject jsonResponse = response.ResultAs<JObject>();
+
+                //var query = recipies.Select(receta => receta.Title.ToLower().Contains(searchValue.ToLower()).ToList();
+
+                var QueryResult = recipies.Select(c => c.Title.ToLower().Contains(searchValue.ToLower())).ToList();
+                RecipieListView.ItemsSource = null;
+                RecipieListView.ItemsSource = QueryResult;
             }
             else
             {
@@ -115,9 +134,22 @@ namespace ReciPie.Views
             string searchValue = TxtSearch.Text;
             if (!string.IsNullOrEmpty(searchValue))
             {
-                var recipies = await _RecipieRepository.GetAllByName(searchValue);
-                ProductListView.ItemsSource = null;
-                ProductListView.ItemsSource = recipies;
+                var UserCredential = JsonConvert.DeserializeObject<FirebaseAuth>(Preferences.Get("UserCredential", ""));
+
+                //List<Recipie> recipies = new List<Recipie>();
+                //recipies = await _RecipieRepository.GetAllMyRecipies(UserCredential.User.LocalId);
+
+                IEnumerable<Recipie> recipies = Enumerable.Empty<Recipie>();
+                recipies = await _RecipieRepository.GetAllMyRecipies(UserCredential.User.LocalId);
+
+                //FirebaseResponse response = await firebaseClient.GetAsync("suppliers");
+                //JObject jsonResponse = response.ResultAs<JObject>();
+
+                //var query = recipies.Select(receta => receta.Title.ToLower().Contains(searchValue.ToLower()).ToList();
+
+                var QueryResult = recipies.Select(c => c.Title.ToLower().Contains(searchValue.ToLower())).ToList();
+                RecipieListView.ItemsSource = null;
+                RecipieListView.ItemsSource = QueryResult;
             }
             else
             {

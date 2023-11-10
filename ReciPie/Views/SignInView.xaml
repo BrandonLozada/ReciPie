@@ -11,22 +11,26 @@
                    Margin="0,50,0,0"
                    WidthRequest="100"
                    HeightRequest="100"/>
+                
                 <Label Text="Bienvenido de nuevo"
                    Margin="0,20,0,0"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
                    FontSize="25"
                    TextColor="Black"/>
+                
                 <Label Text="¡Hola que tal, inicia para continuar!"
                    Margin="0,10,0,0"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
                    FontSize="20"
                    TextColor="Black"/>
+                
                 <Label Text="Correo electrónico"
                    Margin="43,40,0,0"
                    FontSize="20"
                    TextColor="black"/>
+                
                 <Entry Placeholder="Ingrese su correo electrónico" 
                    x:Name="TxtEmail"
                    Keyboard="Email"
@@ -34,10 +38,12 @@
                    FontSize="18"
                    HeightRequest="50"
                    FontAttributes="Italic"/>
+                
                 <Label Text="Contraseña"
                    Margin="43,0,0,0"
                    FontSize="20"
                    TextColor="black"/>
+                
                 <Entry Placeholder="Ingrese su contraseña"
                    IsPassword="True"
                    x:Name="TxtPassword"
@@ -45,6 +51,7 @@
                    FontSize="18"
                    HeightRequest="50"
                    FontAttributes="Italic"/>
+                
                 <Button Text="Iniciar sesión"
                     x:Name="BtnSignIn"
                     CornerRadius="0"

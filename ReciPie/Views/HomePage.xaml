@@ -19,6 +19,13 @@
                     Clicked="GoToMyRecipesPage_Clicked"
                     Margin="40,40,40,0"
                     BackgroundColor="#831111"
+                    TextColor="white"/> 
+            
+            <Button Text="Agregar ReciPie"
+                    x:Name="BtnAddRecipie"
+                    Clicked="GoToAddRecipiePage_Clicked"
+                    Margin="40,40,40,0"
+                    BackgroundColor="#831111"
                     TextColor="white"/>
 
             <Button Text="Mi perfil"
