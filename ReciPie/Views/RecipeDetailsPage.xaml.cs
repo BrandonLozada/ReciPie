@@ -18,6 +18,19 @@ namespace ReciPie.Views
             InitializeComponent();
 
             Title.Text = recipie.Title;
+
+            if (recipie.ImageCover != "")
+            {
+                ImageCover.Source = recipie.ImageCover;
+                ImageCover.IsVisible = true;
+                ImageArea.IsVisible = true;
+            } 
+            else
+            {
+                ImageCover.IsVisible = false;
+                ImageArea.IsVisible = false;
+            }
+
             Description.Text = recipie.Description;
             Instructions.Text = recipie.Instructions;
             PreparationTime.Text = recipie.PreparationTime;
