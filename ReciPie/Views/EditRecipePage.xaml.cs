@@ -22,6 +22,7 @@ namespace ReciPie.Views
     {
         MediaFile file;
         RecipieRepository _RecipieRepository = new RecipieRepository();
+        AddRecipie _recipie = new AddRecipie();
 
         public EditRecipePage(Recipie recipie)
         {
@@ -29,7 +30,16 @@ namespace ReciPie.Views
 
             Id.Text = recipie.Id;
             Title.Text = recipie.Title;
-            ImageCover.Source = recipie.ImageCover;
+
+            if (recipie.ImageCover != "")
+            {
+                ImageCover.Source = _recipie.ImageCover = recipie.ImageCover;
+            }
+            else
+            {
+                ImageCover.Source = "";
+            }
+
             Description.Text = recipie.Description;
             Instructions.Text = recipie.Instructions;
             PreparationTime.Text = recipie.PreparationTime;
@@ -42,7 +52,6 @@ namespace ReciPie.Views
         {
             string id = Id.Text;
             string title = Title.Text;
-            //string imageCover = ImageCover.Source;
             string description = Description.Text;
             string instructions = Instructions.Text;
             string preparationTime = PreparationTime.Text;
@@ -93,24 +102,22 @@ namespace ReciPie.Views
 
                 var UserCredential = JsonConvert.DeserializeObject<FirebaseAuth>(Preferences.Get("UserCredential", ""));
 
-                AddRecipie recipie = new AddRecipie();
-                recipie.Title = title;
-               // recipie.ImageCover = 
-                recipie.Description = description;
-                recipie.Instructions = instructions;
-                recipie.PreparationTime = preparationTime;
-                recipie.CookingTempeture = cookingTempeture;
-                recipie.Ingredients = ingredients;
-                recipie.Categories = categories;
-                recipie.UserId = UserCredential.User.LocalId;
+                _recipie.Title = title;              
+                _recipie.Description = description;
+                _recipie.Instructions = instructions;
+                _recipie.PreparationTime = preparationTime;
+                _recipie.CookingTempeture = cookingTempeture;
+                _recipie.Ingredients = ingredients;
+                _recipie.Categories = categories;
+                _recipie.UserId = UserCredential.User.LocalId;     
 
                 if (file != null)
                 {
                     string imageCover = await _RecipieRepository.Upload(file.GetStream(), Path.GetFileName(file.Path));
-                    recipie.ImageCover = imageCover;
+                    _recipie.ImageCover = imageCover;
                 }
 
-                bool isUpdated = await _RecipieRepository.Update(id, recipie);
+                bool isUpdated = await _RecipieRepository.Update(id, _recipie);
 
                 if (isUpdated)
                 {
@@ -144,6 +151,7 @@ namespace ReciPie.Views
                 {
                     PhotoSize = PhotoSize.Medium
                 });
+
                 if (file == null)
                 {
                     return;
