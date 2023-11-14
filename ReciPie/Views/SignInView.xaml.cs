@@ -39,6 +39,11 @@ namespace ReciPie.Views
                     await DisplayAlert("Advertencia", "Ingresa tu Email", "Ok");
                     return;
                 }
+                if (!await Repository.ValidateEmail(email))
+                {
+                    await DisplayAlert("Advertencia", "El formato de correo electrónico es inválido.", "Aceptar");
+                    return;
+                }
                 if (string.IsNullOrEmpty(password))
                 {
                     await DisplayAlert("Advertencia", "Ingresa tu Contraseña", "Ok");

@@ -35,7 +35,12 @@ namespace ReciPie.Views
 
                 if (string.IsNullOrEmpty(name))
                 {
-                    await DisplayAlert("Advertencia", "El titulo es necesario.", "Aceptar");
+                    await DisplayAlert("Advertencia", "El usuario es necesario.", "Aceptar");
+                    return;
+                }
+                if (string.IsNullOrEmpty(email))
+                {
+                    await DisplayAlert("Advertencia", "El correo electrónico es necesario.", "Aceptar");
                     return;
                 }
                 if (!await Repository.ValidateEmail(email))
