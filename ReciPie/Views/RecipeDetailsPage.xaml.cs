@@ -19,7 +19,7 @@ namespace ReciPie.Views
 
             Title.Text = recipie.Title;
 
-            if (recipie.ImageCover != "")
+            if (!string.IsNullOrEmpty(recipie.ImageCover))
             {
                 ImageCover.Source = recipie.ImageCover;
                 ImageCover.IsVisible = true;

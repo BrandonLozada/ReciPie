@@ -2,8 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ReciPie.Views.RecipeDetailsPage"
-             BackgroundColor="white"
-             Title="Detalles de la ReciPie">
+             BackgroundColor="White">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label x:Name="Title"                
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Start"
+                   FontSize="20"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <ContentPage.Content>
         <ScrollView HeightRequest="3000">
             <StackLayout Padding="20,20,20,0">
@@ -25,20 +33,13 @@
                         </Image>
                     </StackLayout>
                 </Frame>
-                
+
                 <Label Text="Detalles de la ReciPie"
                    FontFamily="Lumanosimo_Regular.ttf"
                    FontAttributes="Bold"
                    FontSize="20"
                    HorizontalOptions ="CenterAndExpand"
                    Padding="0,10,0,20"/>
-
-                <Label Text="Título:"
-                   FontSize="18"
-                   TextColor="Black"
-                   FontAttributes="Bold"/>
-                <Label x:Name="Title"
-                   FontSize="16"/>
 
                 <BoxView 
                    HeightRequest="1"
