@@ -80,8 +80,11 @@ namespace ReciPie.Views
                     await DisplayAlert("Error", exception.Message, "ok");
                 }
             }
-            isVisible.IsVisible = false;
-            isLoading.IsRunning = false;
+            finally
+            {
+                isVisible.IsVisible = false;
+                isLoading.IsRunning = false;
+            }
         }
 
         private async void RegisterTap_Tapped(object sender, EventArgs e)

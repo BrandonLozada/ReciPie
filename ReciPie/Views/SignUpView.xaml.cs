@@ -14,8 +14,8 @@ namespace ReciPie.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpView : ContentPage
     {
-
         UserRepository _UserRepository = new UserRepository();
+
         public SignUpView()
         {
             InitializeComponent();
@@ -92,10 +92,12 @@ namespace ReciPie.Views
                 {
                     await DisplayAlert("Exito", "Cuenta creada correctamente" , "Aceptar");
                 }
-                
             }
-            isVisible.IsVisible = false;
-            isLoading.IsRunning = false;
+            finally
+            {
+                isVisible.IsVisible = false;
+                isLoading.IsRunning = false;
+            }
         }   
     }
 }
