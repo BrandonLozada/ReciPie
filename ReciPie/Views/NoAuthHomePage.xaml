@@ -10,12 +10,12 @@
                      Clicked="GoToSignUpPage_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="#f1f1f1">
             <SearchBar Placeholder="Buscar"
                        x:Name="TxtSearch"
                        TextChanged="TxtSearch_TextChanged"
                        SearchButtonPressed="TxtSearch_SearchButtonPressed"
-                       Margin="0,15,0,30"/>
+                       Margin="0,15,20,30"/>
             <ListView x:Name="RecipieListView" 
                       ItemsSource="{Binding recipies}"
                       HasUnevenRows="True"
@@ -25,8 +25,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <SwipeView>
-                                
+                            <SwipeView>                                
                                 <StackLayout Padding="5">
                                     <Frame BorderColor="Gray"
                                            CornerRadius="5"
