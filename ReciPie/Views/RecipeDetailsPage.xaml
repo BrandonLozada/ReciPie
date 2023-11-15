@@ -15,20 +15,21 @@
     <ContentPage.Content>
         <ScrollView HeightRequest="3000">
             <StackLayout Padding="20,20,20,0">
-                
+
                 <Frame x:Name="ImageArea"
                        VerticalOptions="Center"
                        BackgroundColor="WhiteSmoke"
-                       CornerRadius="10"
-                       HeightRequest="200"
-                       Margin="-20,-20,-20,15"
+                       CornerRadius="15"
+                       HeightRequest="250"
+                       Margin="-20,-35,-20,15"
                        IsVisible="false">
                     <StackLayout VerticalOptions="FillAndExpand">
                         <Image x:Name="ImageCover"
                                Aspect="AspectFill"
-                               HeightRequest="200"
-                               WidthRequest="200"
+                               HeightRequest="300"
+                               WidthRequest="300"
                                BackgroundColor="Transparent"
+                               Margin="-20,-20,-20,15"
                                IsVisible="false">
                         </Image>
                     </StackLayout>
@@ -40,11 +41,6 @@
                    FontSize="20"
                    HorizontalOptions ="CenterAndExpand"
                    Padding="0,10,0,20"/>
-
-                <BoxView 
-                   HeightRequest="1"
-                   Color="#f4f5f4"
-                   Margin ="2, 10, 2, 10"/>
 
                 <Label Text="Temperatura de preparación:"
                    FontSize="18"
