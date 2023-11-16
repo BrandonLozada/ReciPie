@@ -5,41 +5,55 @@
              NavigationPage.HasNavigationBar="false"
              Title="ReciPie">
     <ContentPage.Content>
-        <StackLayout>
-            
-            <Label Text="¡Bienvenido a ReciPie!"
-                    FontAttributes="Bold"
-                    FontSize="40"
-                    HorizontalOptions="CenterAndExpand"
-                    Margin="5"/>
-                    
-            <Image Source="recipie_logo.png"
-                    WidthRequest="200"
-                    HeightRequest="200"/>
+        <StackLayout Background="LightSlateGray">
+            <Frame 
+                   VerticalOptions="FillAndExpand"
+                   Margin="25"
+                   BackgroundColor="GhostWhite" 
+                   CornerRadius="40">
 
-            <Button Text="Ya tengo cuenta"
-                    BackgroundColor="Bisque"
-                    TextColor="Black"
-                    CornerRadius="15"
-                    FontSize="Large"
-                    FontAttributes="Bold"
-                    Clicked="GoToSignInPage_Clicked"/>
+                <StackLayout VerticalOptions="Center"
+                              Spacing="50"
+                              Margin ="10">
 
-            <Button Text="Quiero registrarme"
-                    BackgroundColor="Bisque"
-                    TextColor="Black"
-                    CornerRadius="15"
-                    FontSize="Large"
-                    FontAttributes="Bold"
-                    Clicked="GoToSignUpPage_Clicked"/>
+                    <Label Text="¡Bienvenido a ReciPie!"
+                            FontAttributes="Bold"
+                            FontSize="40"
+                            HorizontalOptions="CenterAndExpand"
+                            Margin="5"/>
 
-            <Button Text="Ver ReciPies"
-                    BackgroundColor="Bisque"
-                    TextColor="Black"
-                    CornerRadius="15"
-                    FontSize="Large"
-                    FontAttributes="Bold"
-                    Clicked="GoToNoAuthHomePage_Clicked"/>
+                    <Image Source="recipie_logo.png"
+                            WidthRequest="200"
+                            HeightRequest="200"/>
+
+                    <Button Text="Ya tengo cuenta"
+                            BackgroundColor="#FFE146"
+                            TextTransform="None"
+                            TextColor="Black"
+                            CornerRadius="15"
+                            FontSize="Large"
+                            FontAttributes="Bold"
+                            Clicked="GoToSignInPage_Clicked"/>
+
+                    <Button Text="Quiero registrarme"
+                            BackgroundColor="#FFE146"
+                            TextTransform="None"
+                            TextColor="Black"
+                            CornerRadius="15"
+                            FontSize="Large"
+                            FontAttributes="Bold"
+                            Clicked="GoToSignUpPage_Clicked"/>
+
+                    <Button Text="Ver ReciPies"
+                            BackgroundColor="#FFE146"
+                            TextTransform="None"
+                            TextColor="Black"
+                            CornerRadius="15"
+                            FontSize="Large"
+                            FontAttributes="Bold"
+                            Clicked="GoToNoAuthHomePage_Clicked"/>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

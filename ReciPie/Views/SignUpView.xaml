@@ -74,10 +74,13 @@
                    HeightRequest="50"/>
                 <Button Text="Crear cuenta" 
                         x:Name="ButtonRegister"
+                        TextTransform="None"
+                        FontSize="20"
                         Clicked="ButtonRegister_Clicked"
                         Margin="40,30,40,10"
-                        CornerRadius="0"
-                        BackgroundColor="white"
+                        CornerRadius="10"
+                        BackgroundColor="#FFE146"
+                        TextColor="Black"
                         BorderWidth="1"
                         BorderColor="black"/>
             </StackLayout>
