@@ -53,10 +53,10 @@ namespace ReciPie
             return true;
         }
 
-        public async Task<string>ChangePassword(string token,string password)
+        public async Task<FirebaseAuth> ChangePassword(string token,string password)
         {
-            var auth = await authProvider.ChangeUserPassword(token, password);
-            return auth.FirebaseToken;
+            var UserCredential = await authProvider.ChangeUserPassword(token, password);
+            return UserCredential;
         }
     }
 }

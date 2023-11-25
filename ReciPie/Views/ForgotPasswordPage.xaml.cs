@@ -22,38 +22,48 @@ namespace ReciPie.Views
         {
             try
             {
+                isVisible.IsVisible = true;
+                isLoading.IsRunning = true;
+
                 string email = TxtEmail.Text;
+
                 if (string.IsNullOrEmpty(email))
                 {
-                    await DisplayAlert("Advertencia", "Ingresa tu Email", "Ok");
+                    await DisplayAlert("Advertencia", "Ingresa tu correo electrónico.", "Aceptar");
                     return;
                 }
 
                 bool isSend = await _userRepository.ResetPassword(email);
+
                 if (isSend)
                 {
-                    await DisplayAlert("Email Enviado", "Se ha enviado un correo a tu Email", "Ok");
+                    await DisplayAlert("Éxito", "Se ha enviado un correo a tu correo electrónico.", "Aceptar");
                     await Navigation.PopAsync();
                 }
                 else
                 {
-                    await DisplayAlert("Advertencia", "El Link no se ha enviado", "Ok");
+                    await DisplayAlert("Error", "Hubo un error al enviar el correo.", "Aceptar");
                 }
             }
             catch (Exception exception)
             {
                 if (exception.Message.Contains("INVALID_EMAIL"))
                 {
-                    await DisplayAlert("Advertencia", "Email Invalido, ingresa un email existente", "Ok");
+                    await DisplayAlert("Advertencia", "Correo inválido, ingresa un correo electrónico existente.", "Aceptar");
                 } 
                 else
                 {
-                    await DisplayAlert("Advertencia", "El email no existe", "Ok");
+                    await DisplayAlert("Advertencia", "No existe una cuenta asociada a ese correo electrónico.", "Aceptar");
 
                 }
             }
-                
-            
+            finally
+            {
+                isVisible.IsVisible = false;
+                isLoading.IsRunning = false;
+            }
+
+
         }
     }
 }

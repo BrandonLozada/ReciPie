@@ -36,7 +36,7 @@ namespace ReciPie.Views
 
                 if (string.IsNullOrEmpty(email))
                 {
-                    await DisplayAlert("Advertencia", "Ingresa tu Email", "Ok");
+                    await DisplayAlert("Advertencia", "El correo electrónico es necesario.", "Aceptar");
                     return;
                 }
                 if (!await Repository.ValidateEmail(email))
@@ -46,7 +46,7 @@ namespace ReciPie.Views
                 }
                 if (string.IsNullOrEmpty(password))
                 {
-                    await DisplayAlert("Advertencia", "Ingresa tu Contraseña", "Ok");
+                    await DisplayAlert("Advertencia", "Ingresa tu Contraseña", "Aceptar");
                     return;
                 }
 
@@ -56,8 +56,8 @@ namespace ReciPie.Views
                 {
                     string jsonString = JsonConvert.SerializeObject(UserCredential);
                     Preferences.Set("UserCredential", jsonString);
-                    Preferences.Set("userPassword", password);
-                    Preferences.Set("userEmail", email);
+                    //Preferences.Set("userPassword", password);
+                    //Preferences.Set("userEmail", email);
 
                     await Navigation.PushAsync(new HomePage());
                 }

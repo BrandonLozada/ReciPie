@@ -108,16 +108,8 @@ namespace ReciPie.Views
             {
                 var UserCredential = JsonConvert.DeserializeObject<FirebaseAuth>(Preferences.Get("UserCredential", ""));
 
-                //List<Recipie> recipies = new List<Recipie>();
-                //recipies = await _RecipieRepository.GetAllMyRecipies(UserCredential.User.LocalId);
-
                 IEnumerable<Recipie> recipies = Enumerable.Empty<Recipie>();
                 recipies = await _RecipieRepository.GetAllMyRecipies(UserCredential.User.LocalId);
-
-                //FirebaseResponse response = await firebaseClient.GetAsync("suppliers");
-                //JObject jsonResponse = response.ResultAs<JObject>();
-
-                //var query = recipies.Select(receta => receta.Title.ToLower().Contains(searchValue.ToLower()).ToList();
 
                 var QueryResult = recipies.Select(c => c.Title.ToLower().Contains(searchValue.ToLower())).ToList();
                 RecipieListView.ItemsSource = null;
@@ -136,16 +128,8 @@ namespace ReciPie.Views
             {
                 var UserCredential = JsonConvert.DeserializeObject<FirebaseAuth>(Preferences.Get("UserCredential", ""));
 
-                //List<Recipie> recipies = new List<Recipie>();
-                //recipies = await _RecipieRepository.GetAllMyRecipies(UserCredential.User.LocalId);
-
                 IEnumerable<Recipie> recipies = Enumerable.Empty<Recipie>();
                 recipies = await _RecipieRepository.GetAllMyRecipies(UserCredential.User.LocalId);
-
-                //FirebaseResponse response = await firebaseClient.GetAsync("suppliers");
-                //JObject jsonResponse = response.ResultAs<JObject>();
-
-                //var query = recipies.Select(receta => receta.Title.ToLower().Contains(searchValue.ToLower()).ToList();
 
                 var QueryResult = recipies.Select(c => c.Title.ToLower().Contains(searchValue.ToLower())).ToList();
                 RecipieListView.ItemsSource = null;

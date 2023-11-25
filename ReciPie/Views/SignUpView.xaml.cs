@@ -75,10 +75,8 @@ namespace ReciPie.Views
                 {
                     string jsonString = JsonConvert.SerializeObject(UserCredential);
                     Preferences.Set("UserCredential", jsonString);
-                    Preferences.Set("userPassword", password);
-                    Preferences.Set("userEmail", email);
 
-                    await DisplayAlert("¡Bienvenido!", $"Haz creado tu cuenta e iniciado sesión en ReciPie", "Aceptar");
+                    await DisplayAlert("¡Bienvenido!", $"Haz creado tu cuenta e iniciado sesión en ReciPie.", "Aceptar");
                     await Navigation.PushAsync(new HomePage());
                 }
                 else
@@ -91,11 +89,11 @@ namespace ReciPie.Views
                // TODO: Manejar mensajes de excepción.
                if(exception.Message.Contains("EMAIL_EXISTS"))
                 {
-                   await DisplayAlert("Advertencia", "El Email ya existe, Ingresa otro distinto", "Aceptar");
+                   await DisplayAlert("Advertencia", "El correo electrónico ya existe, ingresa otro distinto.", "Aceptar");
                 }
                 else
                 {
-                    await DisplayAlert("Exito", "Cuenta creada correctamente" , "Aceptar");
+                    await DisplayAlert("Exito", "Cuenta creada correctamente.", "Aceptar");
                 }
             }
             finally

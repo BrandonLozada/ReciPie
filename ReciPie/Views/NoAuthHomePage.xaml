@@ -10,7 +10,7 @@
                      Clicked="GoToSignUpPage_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#f1f1f1">
+        <StackLayout BackgroundColor="#eaeaea">
             <SearchBar Placeholder="Buscar"
                        x:Name="TxtSearch"
                        TextChanged="TxtSearch_TextChanged"

@@ -17,11 +17,12 @@ namespace ReciPie
             InitializeComponent();
 
             // TODO: En el momento que mostremos la aplicación, descomentamos esta parte del código.
-            //bool hasKey = Preferences.ContainsKey("token");
-            //if (hasKey)
+            //bool hasUserCredential = Preferences.ContainsKey("UserCredential");
+            
+            //if (hasUserCredential)
             //{
-            //    string token = Preferences.Get("token", "");
-            //    if (!string.IsNullOrEmpty(token))
+            //    string UserCredential = Preferences.Get("UserCredential", "");
+            //    if (!string.IsNullOrEmpty(UserCredential))
             //    {
             //        Navigation.PushAsync(new HomePage());
             //    }

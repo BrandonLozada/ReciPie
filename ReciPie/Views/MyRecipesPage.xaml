@@ -51,14 +51,14 @@
                                     
                                     <StackLayout Orientation="Horizontal">
                                         <Image Source="edit.png"
-                                               HeightRequest="60"
-                                               WidthRequest="60"
-                                               Margin="0,0,25,0">
+                                               HeightRequest="35"
+                                               WidthRequest="35"
+                                               Margin="0,0,10,0">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer x:Name="EditTap" Tapped="EditTap_Tapped" CommandParameter="{Binding Id}"/>
                                             </Image.GestureRecognizers>
                                         </Image>
-                                        <Image Source="delete.png" HeightRequest="60" WidthRequest="60">
+                                        <Image Source="delete.png" HeightRequest="35" WidthRequest="35">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer x:Name="DeleteTapp" Tapped="DeleteTapp_Tapped" CommandParameter="{Binding Id}"/>
                                             </Image.GestureRecognizers>

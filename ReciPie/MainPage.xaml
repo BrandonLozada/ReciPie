@@ -6,15 +6,15 @@
              Title="ReciPie">
     <ContentPage.Content>
         <StackLayout Background="LightSlateGray">
-            <Frame 
-                   VerticalOptions="FillAndExpand"
+            <Frame VerticalOptions="FillAndExpand"
                    Margin="25"
                    BackgroundColor="GhostWhite" 
-                   CornerRadius="40">
+                   CornerRadius="24"
+                   BorderColor="Gray">
 
                 <StackLayout VerticalOptions="Center"
-                              Spacing="50"
-                              Margin ="10">
+                             Spacing="50"
+                             Margin ="10">
 
                     <Label Text="¡Bienvenido a ReciPie!"
                             FontAttributes="Bold"
@@ -30,7 +30,9 @@
                             BackgroundColor="#FFE146"
                             TextTransform="None"
                             TextColor="Black"
-                            CornerRadius="15"
+                            BorderWidth="1"
+                            BorderColor="Gray"
+                            CornerRadius="12"
                             FontSize="Large"
                             FontAttributes="Bold"
                             Clicked="GoToSignInPage_Clicked"/>
@@ -38,8 +40,10 @@
                     <Button Text="Quiero registrarme"
                             BackgroundColor="#FFE146"
                             TextTransform="None"
+                            BorderWidth="1"
                             TextColor="Black"
-                            CornerRadius="15"
+                            BorderColor="Gray"
+                            CornerRadius="12"
                             FontSize="Large"
                             FontAttributes="Bold"
                             Clicked="GoToSignUpPage_Clicked"/>
@@ -47,8 +51,10 @@
                     <Button Text="Ver ReciPies"
                             BackgroundColor="#FFE146"
                             TextTransform="None"
+                            BorderWidth="1"
                             TextColor="Black"
-                            CornerRadius="15"
+                            BorderColor="Gray"
+                            CornerRadius="12"
                             FontSize="Large"
                             FontAttributes="Bold"
                             Clicked="GoToNoAuthHomePage_Clicked"/>

@@ -5,52 +5,114 @@
              NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="False"
              Title="Inicio">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Mi perfil"
+                     Clicked="GoToMyProfilePage_Clicked"/>
+        <ToolbarItem Text="Mis ReciPies"
+                     Clicked="GoToMyRecipesPage_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
+        
+        <StackLayout BackgroundColor="#eaeaea">
 
             <Label Text="¡Bienvenido a ReciPie!"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center"
+                   FontAttributes="Bold"
                    FontSize="Large"
-                   TextColor="Black"/>
+                   Margin="0,20,0,0"/>
 
-            <Button Text="Mis recetas"
-                    x:Name="BtnProductList"
-                    Clicked="GoToMyRecipesPage_Clicked"
-                    Margin="40,40,40,0"
-                    BackgroundColor="#831111"
-                    TextColor="white"/> 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+
+            <StackLayout Orientation="Horizontal" Spacing="50" HorizontalOptions="CenterAndExpand">
+                <ImageButton Source="secure.png"
+                             HeightRequest="30"
+                             WidthRequest="30"                             
+                             HorizontalOptions="Center"
+                             VerticalOptions="CenterAndExpand"
+                             Clicked="BtnChangePassword_Clicked"/>
+                <ImageButton Source="exit.png"
+                             HeightRequest="30"
+                             WidthRequest="30"
+                             HorizontalOptions="Center"
+                             VerticalOptions="CenterAndExpand"
+                             Clicked="LogOut_Clicked"/>
+            </StackLayout>
+
+            <SearchBar Placeholder="Buscar"
+                       x:Name="TxtSearch"
+                       TextChanged="TxtSearch_TextChanged"
+                       SearchButtonPressed="TxtSearch_SearchButtonPressed"
+                       Margin="0,15,20,30"/>
             
-            <Button Text="Agregar ReciPie"
-                    x:Name="BtnAddRecipie"
-                    Clicked="GoToAddRecipiePage_Clicked"
-                    Margin="40,40,40,0"
-                    BackgroundColor="#831111"
-                    TextColor="white"/>
-
-            <Button Text="Mi perfil"
-                    x:Name="BtnMyProfile"
-                    Clicked="GoToMyProfilePage_Clicked"
-                    Margin="40,40,40,0"
-                    BackgroundColor="#831111"
-                    TextColor="white"/>
-
-            <Button Text="Cambiar Contraseña de la cuenta" 
-                    x:Name="BtnChangePassword"                   
-                    Clicked="BtnChangePassword_Clicked"
-                    Margin="40,30,40,0"
-                    BackgroundColor="black"
-                    TextColor="White"/>
-
-            <Button x:Name="Logout"
-                    Text="Cerrar sesión"
-                    TextColor="Black"
-                    Clicked="LogOut_Clicked"
-                    Margin="40,30,40,0"
-                    CornerRadius="0"
-                    BackgroundColor="white"
-                    BorderWidth="1"
-                    BorderColor="black"/>
+            <ListView x:Name="RecipieListView" 
+                      ItemsSource="{Binding recipies}"
+                      HasUnevenRows="True"
+                      ItemTapped="RecipieListView_ItemTapped"                  
+                      IsRefreshing="True"
+                      IsPullToRefreshEnabled="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <SwipeView>
+                                <StackLayout Padding="5">
+                                    <Frame BorderColor="Gray"
+                                           CornerRadius="5"
+                                           Padding="8">
+                                        <StackLayout>
+                                            <Grid Margin="0,5,0,0">
+                                                <Label Text="{Binding Categories}" Grid.Row="0" FontSize="Caption" TextColor="Black"/>
+                                                <Label Text="{Binding PreparationTime}" HorizontalOptions="End" Margin="0,0,25,0" Grid.Row="0" FontSize="Caption" TextColor="Black"/>
+                                                <Image Source="preparation_time.png"
+                                                       HorizontalOptions="End"
+                                                       Grid.Row="0"
+                                                       HeightRequest="20" 
+                                                       WidthRequest="20"/>
+                                            </Grid>
+                                            <Label Text="{Binding Title}" FontSize="Medium" FontAttributes="Bold" TextColor="black"/>
+                                            <BoxView Color="Gray"
+                                                     HeightRequest="0.5"
+                                                     HorizontalOptions="Fill"/>
+                                            <Label Text="{Binding Description}" FontSize="Subtitle" TextColor="Black"/>
+                                            <BoxView Color="Gray"
+                                                     HeightRequest="0.5"
+                                                     HorizontalOptions="Fill"/>
+                                            <Grid>
+                                                <Image Source="add_favorite.png"
+                                                       Grid.Column="0"
+                                                       HeightRequest="35"
+                                                       WidthRequest="35">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="FavoriteTap" CommandParameter="{Binding Id}"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                                <Image Source="add_bookmark.png" 
+                                                       Grid.Column="1"
+                                                       HeightRequest="35" 
+                                                       WidthRequest="35">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer x:Name="BookmarkTapp" CommandParameter="{Binding Id}"/>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             
         </StackLayout>
     </ContentPage.Content>

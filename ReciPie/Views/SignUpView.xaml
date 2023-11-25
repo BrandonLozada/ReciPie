@@ -72,17 +72,20 @@
                    Margin="40,-10,40,10"
                    FontSize="16"
                    HeightRequest="50"/>
+
                 <Button Text="Crear cuenta" 
                         x:Name="ButtonRegister"
-                        TextTransform="None"
-                        FontSize="20"
-                        Clicked="ButtonRegister_Clicked"
-                        Margin="40,30,40,10"
                         CornerRadius="10"
                         BackgroundColor="#FFE146"
-                        TextColor="Black"
                         BorderWidth="1"
-                        BorderColor="black"/>
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        TextTransform="None"
+                        BorderColor="Gray"
+                        Clicked="ButtonRegister_Clicked"
+                        Margin="40,30,40,10"/>
+
             </StackLayout>
             
             <Grid 
